@@ -11,7 +11,7 @@ import '../presentation/sign_in_five_screen.dart';
 import '../presentation/sign_in_six_screen.dart';
 import '../presentation/sign_in_seven_screen.dart';
 import '../presentation/sign_in_eight_screen.dart';
-import '../presentation/android_large_eleven_screen.dart';
+//import '../presentation/android_large_eleven_screen.dart';
 import '../presentation/sign_up_two_screen.dart';
 import '../presentation/sign_up_three_screen.dart';
 import '../presentation/sign_up_screen.dart';
@@ -22,7 +22,7 @@ import '../presentation/home_screen_container_screen.dart';
 import '../presentation/home_screen_one_screen.dart';
 import '../presentation/notification_one_screen.dart';
 import '../presentation/notification_screen.dart';
-import '../presentation/wallet_summary_screen.dart';
+//import '../presentation/wallet_summary_screen.dart';
 import '../presentation/transaction_history_screen.dart';
 import '../presentation/transfer_screen.dart';
 import '../presentation/airtime_screen.dart';
@@ -32,17 +32,17 @@ import '../presentation/electricity_two_screen.dart';
 import '../presentation/select_disco_company_screen.dart';
 import '../presentation/meter_type_screen.dart';
 import '../presentation/electricity_one_screen.dart';
-import '../presentation/electricity_screen.dart';
+//import '../presentation/electricity_screen.dart';
 import '../presentation/successful_elect_pay_screen.dart';
 import '../presentation/cable_pay_screen.dart';
 import '../presentation/select_cable_screen.dart';
 import '../presentation/betting_one_screen.dart';
 import '../presentation/betting_screen.dart';
 import '../presentation/education_pin_two_screen.dart';
-import '../presentation/education_pin_five_screen.dart';
+//import '../presentation/education_pin_five_screen.dart';
 import '../presentation/education_pin_four_screen.dart';
 import '../presentation/education_pin_three_screen.dart';
-import '../presentation/education_pin_one_screen.dart';
+//import '../presentation/education_pin_one_screen.dart';
 import '../presentation/education_pin_six_screen.dart';
 import '../presentation/home_screen_three_screen.dart';
 import '../presentation/upgrade_two_screen.dart';
@@ -54,7 +54,7 @@ import '../presentation/withdraw_bonus_five_screen.dart';
 import '../presentation/withdraw_bonus_six_screen.dart';
 import '../presentation/withdraw_bonus_three_screen.dart';
 import '../presentation/referals_screen.dart';
-import '../presentation/referals_two_screen.dart';
+//import '../presentation/referals_two_screen.dart';
 import '../presentation/referals_three_screen.dart';
 import '../presentation/referals_four_screen.dart';
 import '../presentation/referals_five_screen.dart';
@@ -215,7 +215,7 @@ class AppRoutes {
     signInSixScreen: (context) => SignInSixScreen(),
     signInSevenScreen: (context) => SignInSevenScreen(),
     signInEightScreen: (context) => SignInEightScreen(),
-    androidLargeElevenScreen: (context) => AndroidLargeElevenScreen(),
+    //androidLargeElevenScreen: (context) => AndroidLargeElevenScreen(),
     signUpTwoScreen: (context) => SignUpTwoScreen(),
     signUpThreeScreen: (context) => SignUpThreeScreen(),
     signUpScreen: (context) => SignUpScreen(),
@@ -226,7 +226,7 @@ class AppRoutes {
     homeScreenOneScreen: (context) => HomeScreenOneScreen(),
     notificationOneScreen: (context) => NotificationOneScreen(),
     notificationScreen: (context) => NotificationScreen(),
-    walletSummaryScreen: (context) => WalletSummaryScreen(),
+    //walletSummaryScreen: (context) => WalletSummaryScreen(),
     transactionHistoryScreen: (context) => TransactionHistoryScreen(),
     transferScreen: (context) => TransferScreen(),
     airtimeScreen: (context) => AirtimeScreen(),
@@ -236,17 +236,17 @@ class AppRoutes {
     selectDiscoCompanyScreen: (context) => SelectDiscoCompanyScreen(),
     meterTypeScreen: (context) => MeterTypeScreen(),
     electricityOneScreen: (context) => ElectricityOneScreen(),
-    electricityScreen: (context) => ElectricityScreen(),
+    //electricityScreen: (context) => ElectricityScreen(),
     successfulElectPayScreen: (context) => SuccessfulElectPayScreen(),
     cablePayScreen: (context) => CablePayScreen(),
     selectCableScreen: (context) => SelectCableScreen(),
     bettingOneScreen: (context) => BettingOneScreen(),
     bettingScreen: (context) => BettingScreen(),
     educationPinTwoScreen: (context) => EducationPinTwoScreen(),
-    educationPinFiveScreen: (context) => EducationPinFiveScreen(),
+    //educationPinFiveScreen: (context) => EducationPinFiveScreen(),
     educationPinFourScreen: (context) => EducationPinFourScreen(),
     educationPinThreeScreen: (context) => EducationPinThreeScreen(),
-    educationPinOneScreen: (context) => EducationPinOneScreen(),
+    //educationPinOneScreen: (context) => EducationPinOneScreen(),
     educationPinSixScreen: (context) => EducationPinSixScreen(),
     homeScreenThreeScreen: (context) => HomeScreenThreeScreen(),
     upgradeTwoScreen: (context) => UpgradeTwoScreen(),
@@ -258,12 +258,12 @@ class AppRoutes {
     withdrawBonusSixScreen: (context) => WithdrawBonusSixScreen(),
     withdrawBonusThreeScreen: (context) => WithdrawBonusThreeScreen(),
     referalsScreen: (context) => ReferalsScreen(),
-    referalsTwoScreen: (context) => ReferalsTwoScreen(),
+    //referalsTwoScreen: (context) => ReferalsTwoScreen(),
     referalsThreeScreen: (context) => ReferalsThreeScreen(),
     referalsFourScreen: (context) => ReferalsFourScreen(),
     referalsFiveScreen: (context) => ReferalsFiveScreen(),
     referalsSixScreen: (context) => ReferalsSixScreen(),
-    referalsTenTabContainerScreen: (context) => ReferalsTenTabContainerScreen(),
+    //referalsTenTabContainerScreen: (context) => ReferalsTenTabContainerScreen(),
     aboutLitepayScreen: (context) => AboutLitepayScreen(),
     appNavigationScreen: (context) => AppNavigationScreen()
   };

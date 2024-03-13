@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litepay/presentation/welcome_screen_three_screen.dart';
 import '../core/app_export.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_outlined_button.dart';
@@ -196,6 +197,11 @@ class WelcomeScreenTwoScreen extends StatelessWidget {
             buttonStyle: CustomButtonStyles.outlineOnPrimary,
           ),
           CustomElevatedButton(
+            onPressed:() {
+              Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => WelcomeScreenThreeScreen())
+              );
+            },
             height: 30.v,
             width: 62.h,
             text: "Next",

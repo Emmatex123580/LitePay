@@ -1,12 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:litepay/presentation/welcome_screen.dart';
 import '../core/app_export.dart';
+import 'dart:async';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key})
       : super(
           key: key,
         );
 
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+
+  void initState() {
+    super.initState();
+
+    // Redirect to another screen after 3 seconds
+    Timer(
+      Duration(seconds: 3),
+      () => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => WelcomeScreen()),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(

@@ -1,6 +1,7 @@
+/**
 import 'package:flutter/material.dart';
 import '../core/app_export.dart';
-import 'referals_nine_page.dart';
+import 'referals_nine_page.dart'; 
 import 'referals_ten_page.dart';
 
 class ReferalsTenTabContainerScreen extends StatefulWidget {
@@ -83,3 +84,4 @@ class ReferalsTenTabContainerScreenState
     Navigator.pop(context);
   }
 }
+*/

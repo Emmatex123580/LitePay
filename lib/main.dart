@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'litepay',
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.signInScreen,
+          initialRoute: AppRoutes.splashScreen,   //it was splashScreen
           routes: AppRoutes.routes,
         );
       },

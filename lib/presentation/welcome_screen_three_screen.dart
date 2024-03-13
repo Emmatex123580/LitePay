@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litepay/presentation/sign_in_screen.dart';
 import '../core/app_export.dart';
 import '../widgets/custom_elevated_button.dart';
 
@@ -231,6 +232,11 @@ class WelcomeScreenThreeScreen extends StatelessWidget {
   /// Section Widget
   Widget _buildGetStartedButton(BuildContext context) {
     return CustomElevatedButton(
+      onPressed: () {
+        Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => SignInScreen())
+        );
+      },
       height: 34.v,
       text: "Get Started",
       margin: EdgeInsets.only(

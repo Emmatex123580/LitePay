@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litepay/presentation/welcome_screen_two_screen.dart';
 import '../core/app_export.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_outlined_button.dart';
@@ -166,6 +167,9 @@ class WelcomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomOutlinedButton(
+            onPressed: () {
+              // TODO: Add an action
+            },
             height: 30.v,
             width: 62.h,
             text: "Skip",
@@ -173,6 +177,11 @@ class WelcomeScreen extends StatelessWidget {
             buttonTextStyle: CustomTextStyles.labelLargePrimary,
           ),
           CustomElevatedButton(
+            onPressed:() {
+              Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => WelcomeScreenTwoScreen())
+              );
+            },
             height: 30.v,
             width: 62.h,
             text: "Next",
