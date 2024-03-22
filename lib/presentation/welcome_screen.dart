@@ -178,7 +178,7 @@ class WelcomeScreen extends StatelessWidget {
           ),
           CustomElevatedButton(
             onPressed:() {
-              Navigator.pushReplacement(context,
+              Navigator.push(context,
               MaterialPageRoute(builder: (context) => WelcomeScreenTwoScreen())
               );
             },

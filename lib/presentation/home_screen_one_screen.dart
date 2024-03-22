@@ -4,12 +4,17 @@ import 'home_screen_page.dart';
 import '../widgets/custom_bottom_bar.dart';
 import '../widgets/custom_icon_button.dart';
 
-class HomeScreenOneScreen extends StatelessWidget {
+class HomeScreenOneScreen extends StatefulWidget {
   HomeScreenOneScreen({Key? key})
       : super(
           key: key,
         );
 
+  @override
+  State<HomeScreenOneScreen> createState() => _HomeScreenOneScreenState();
+}
+
+class _HomeScreenOneScreenState extends State<HomeScreenOneScreen> {
   GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
   @override

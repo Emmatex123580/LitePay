@@ -1,15 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:litepay/presentation/sign_in_six_screen.dart';
 import '../core/app_export.dart';
 import '../widgets/custom_elevated_button.dart';
-import '../widgets/custom_pin_code_text_field.dart';
+import 'package:flutter/services.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
-class SignInFiveScreen extends StatelessWidget {
+
+class SignInFiveScreen extends StatefulWidget {
   const SignInFiveScreen({Key? key})
       : super(
           key: key,
         );
 
   @override
+  State<SignInFiveScreen> createState() => _SignInFiveScreenState();
+}
+
+class _SignInFiveScreenState extends State<SignInFiveScreen> {
+  int code =123456; //Default code to use for testing
+  String Code = '';
+  TextEditingController _codeController = TextEditingController();
+  @override
+  void dispose() {
+    _codeController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -36,10 +52,7 @@ class SignInFiveScreen extends StatelessWidget {
                   left: 20.h,
                   right: 21.h,
                 ),
-                child: CustomPinCodeTextField(
-                  context: context,
-                  onChanged: (value) {},
-                ),
+                child: pinCodeTextFieldWidget
               ),
               SizedBox(height: 11.v),
               Align(
@@ -67,6 +80,10 @@ class SignInFiveScreen extends StatelessWidget {
               CustomElevatedButton(
                 text: "Verify",
                 margin: EdgeInsets.symmetric(horizontal: 41.h),
+                onPressed: () {
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignInSixScreen()));
+                },
               ),
               Spacer(),
               CustomImageView(
@@ -105,6 +122,10 @@ class SignInFiveScreen extends StatelessWidget {
             height: 20.adaptSize,
             width: 20.adaptSize,
             margin: EdgeInsets.only(bottom: 59.v),
+            color: Colors.black54,
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -120,4 +141,29 @@ class SignInFiveScreen extends StatelessWidget {
       ),
     );
   }
+
+// Code display
+  Widget get pinCodeTextFieldWidget => PinCodeTextField(
+      appContext: context,
+      controller: _codeController,
+      length: 6,
+      autoFocus: true,
+      keyboardType: TextInputType.number,
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly,
+      ],
+      pinTheme: PinTheme(
+        fieldHeight: 39.h,
+        fieldWidth: 39.h,
+        shape: PinCodeFieldShape.box,
+        inactiveColor: appTheme.purpleA100,
+        activeColor: appTheme.purpleA100,
+      ),
+      onCompleted: (value) {
+          Navigator.push(context,
+            MaterialPageRoute(builder: (context) => SignInSixScreen()));
+      },
+    );
+
+
 }

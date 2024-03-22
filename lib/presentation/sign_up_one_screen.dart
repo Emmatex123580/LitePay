@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:litepay/presentation/home_screen_page.dart';
+import 'package:litepay/presentation/sign_in_three_screen.dart';
 import '../core/app_export.dart';
 import '../widgets/custom_elevated_button.dart';
+import 'package:flutter/services.dart';
 
 class SignUpOneScreen extends StatelessWidget {
   const SignUpOneScreen({Key? key})
@@ -18,47 +21,85 @@ class SignUpOneScreen extends StatelessWidget {
             children: [
               _buildVectorNineteenSection(context),
               SizedBox(height: 44.v),
-              _buildSixtyOneSection(context),
-              SizedBox(height: 9.v),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Padding(
-                  padding: EdgeInsets.only(right: 20.h),
-                  child: Text(
-                    "Forgot password?",
-                    style: CustomTextStyles.bodySmall12,
-                  ),
-                ),
-              ),
-              SizedBox(height: 27.v),
-              CustomElevatedButton(
-                text: "Sign In",
-                margin: EdgeInsets.only(
-                  left: 39.h,
-                  right: 43.h,
-                ),
-              ),
-              SizedBox(height: 29.v),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomImageView(
-                    imagePath: ImageConstant.imgMdiFingerprint,
-                    height: 35.adaptSize,
-                    width: 35.adaptSize,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 12.h,
-                      top: 8.v,
-                      bottom: 5.v,
+              LoginForm(),
+              SizedBox(height: 20.v),
+              TextButton(
+                onPressed:() {
+                  //TODO: implement action
+                  showModalBottomSheet(
+                    context: context,
+                    isDismissible: false,
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+                    builder: (BuildContext context0) {
+                      return Container(
+                        height: 300,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Authentication Required",
+                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)
+                            ),
+                            Text("Verify  Identtity"),
+                            Icon(
+                              Icons.fingerprint,
+                              size: 35.0,
+                              weight: 10.0,
+                            ),
+                            Text(
+                              "Login to scan fingerprint",
+                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                            ),
+                             Container(
+                              height: 25,
+                              width: 100,
+                              child: ElevatedButton(
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(fontWeight: FontWeight.bold)
+                                ),
+                                onPressed: () => Navigator.pop(context),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:  Color.fromARGB(255, 185, 18, 6), // Background color of the button
+                                  foregroundColor: Colors.white, // Text color
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0) // Button border radius
+                                  )
+                                ),
+                            
+                              ),
+                            )
+                          ]
+                        ),
+                      );
+                    }
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                   Icon(
+                    Icons.fingerprint,
+                    size: 35,
+                    color: Colors.black,
+                   ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: 12.h,
+                        top: 8.v,
+                        bottom: 5.v,
+                      ),
+                      child: Text(
+                        "Fingerprint",
+                        style: theme.textTheme.titleSmall,
+                      ),
                     ),
-                    child: Text(
-                      "Fingerprint",
-                      style: theme.textTheme.titleSmall,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               Spacer(),
               CustomImageView(
@@ -132,59 +173,125 @@ class SignUpOneScreen extends StatelessWidget {
       ),
     );
   }
+ 
+}
 
-  /// Section Widget
-  Widget _buildSixtyOneSection(BuildContext context) {
-    return SizedBox(
-      height: 42.v,
-      width: 320.h,
-      child: Stack(
-        alignment: Alignment.topLeft,
+
+class LoginForm extends StatefulWidget {
+@override
+_LoginFormState createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  static String username = "ace";
+  static String password = "ace";
+  static String state = "Forgot password";
+  bool _isPasswordVisible = false;
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 11.h,
-                vertical: 7.v,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _usernameController,
+              decoration: InputDecoration(
+                hintText: 'Username',
+                labelText: 'Username',
+                border: OutlineInputBorder(),
+                contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                hintStyle: TextStyle(color: Colors.black),
               ),
-              decoration: AppDecoration.outlineOnPrimaryContainer.copyWith(
-                borderRadius: BorderRadiusStyle.roundedBorder5,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: 1.v),
-                  CustomImageView(
-                    imagePath: ImageConstant.imgEyesClosed,
-                    height: 16.adaptSize,
-                    width: 16.adaptSize,
+               inputFormatters: [
+                FilteringTextInputFormatter.deny(RegExp(r'\s')), // Deny spaces
+              ],
+            ),
+          ),
+          SizedBox(height: 16.0),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _passwordController,
+              obscureText: !_isPasswordVisible,
+              decoration: InputDecoration(
+                hintText: 'Password',
+                labelText: 'Password',
+                border: OutlineInputBorder(),
+                contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
                   ),
-                ],
+                  onPressed: () {
+                    setState(() {
+                      _isPasswordVisible = !_isPasswordVisible;
+                    });
+                  },
+                ),
               ),
             ),
           ),
           Align(
-            alignment: Alignment.topLeft,
-            child: Container(
-              height: 19.v,
-              width: 69.h,
-              margin: EdgeInsets.only(left: 13.h),
-              decoration: BoxDecoration(
-                color: theme.colorScheme.onPrimary,
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 21.h),
+                  child: TextButton(
+                    child: Text(
+                      state,
+                      style: CustomTextStyles.bodySmall12,
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignInThreeScreen()));
+                    },
+                  ),
+                ),
               ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: EdgeInsets.only(left: 16.h),
-              child: Text(
-                "Password",
-                style: CustomTextStyles.bodySmall12,
+          (state == "Incorrect password") ? Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 10.0),              
+              TextButton(
+                child: Text("Forgot Password"),
+                onPressed: () {
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignInThreeScreen()));
+                },
               ),
+              SizedBox(height: 10.0)
+            ],
+          )
+          :
+          Container(),
+          SizedBox(height: 16.0),
+          CustomElevatedButton(
+            onPressed: () {                  
+              setState(() {
+                    if(_usernameController.text == username && _passwordController.text == password) {
+                    Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => HomeScreenPage()));
+                    state = "Forgot password";
+                }
+                  state = "Incorrect password";
+                });
+            },
+            text: "Sign In",
+            margin: EdgeInsets.only(
+              left: 40.h,
+              right: 42.h,
             ),
           ),
         ],

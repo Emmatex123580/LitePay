@@ -14,6 +14,16 @@ class WelcomeScreenTwoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back),
+            color: Colors.black54
+          ),
+          elevation: 0.0,
+        ),
         backgroundColor: theme.colorScheme.primary,
         body: Container(
           width: double.maxFinite,
@@ -198,7 +208,7 @@ class WelcomeScreenTwoScreen extends StatelessWidget {
           ),
           CustomElevatedButton(
             onPressed:() {
-              Navigator.pushReplacement(context,
+              Navigator.push(context,
               MaterialPageRoute(builder: (context) => WelcomeScreenThreeScreen())
               );
             },

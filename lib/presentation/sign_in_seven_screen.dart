@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import '../core/app_export.dart';
 import '../widgets/custom_elevated_button.dart';
-import '../widgets/custom_pin_code_text_field.dart';
+import 'package:flutter/services.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
-class SignInSevenScreen extends StatelessWidget {
+
+
+class SignInSevenScreen extends StatefulWidget {
   const SignInSevenScreen({Key? key})
       : super(
           key: key,
         );
 
+  @override
+  State<SignInSevenScreen> createState() => _SignInSevenScreenState();
+}
+
+class _SignInSevenScreenState extends State<SignInSevenScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,10 +44,7 @@ class SignInSevenScreen extends StatelessWidget {
                   left: 20.h,
                   right: 21.h,
                 ),
-                child: CustomPinCodeTextField(
-                  context: context,
-                  onChanged: (value) {},
-                ),
+                child: pinCodeTextFieldWidget
               ),
               SizedBox(height: 7.v),
               Align(
@@ -109,4 +114,25 @@ class SignInSevenScreen extends StatelessWidget {
       ),
     );
   }
+
+  //Code display
+  Widget get pinCodeTextFieldWidget => PinCodeTextField(
+      appContext: context,
+      //controller: _codeController,
+      length: 6,
+      keyboardType: TextInputType.number,
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly,
+      ],
+      pinTheme: PinTheme(
+        fieldHeight: 39.h,
+        fieldWidth: 39.h,
+        shape: PinCodeFieldShape.box,
+        inactiveColor: appTheme.purpleA100,
+        activeColor: appTheme.purpleA100,
+      ),
+      onCompleted: (value) {
+        
+      },
+    );
 }

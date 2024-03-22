@@ -126,7 +126,8 @@ class TextThemes {
           color: colorScheme.onPrimaryContainer.withOpacity(1),
           fontSize: 10.fSize,
           fontFamily: 'Poppins',
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w500
+
         ),
         titleLarge: TextStyle(
           color: colorScheme.primary,
@@ -161,6 +162,7 @@ class ColorSchemes {
 
     // On colors(text colors)
     onPrimary: Color(0XFFFFFFFF),
+    
     onPrimaryContainer: Color(0X7E2F2F2F),
   );
 }

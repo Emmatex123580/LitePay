@@ -13,6 +13,17 @@ class WelcomeScreenThreeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back),
+            color: Colors.black54
+          ),
+          elevation: 0.0,
+          backgroundColor: Colors.white,
+        ),
         body: Container(
           width: double.maxFinite,
           padding: EdgeInsets.symmetric(vertical: 39.v),

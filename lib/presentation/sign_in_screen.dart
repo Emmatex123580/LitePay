@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:litepay/presentation/sign_in_three_screen.dart';
+import 'package:litepay/presentation/sign_up_screen.dart';
 import '../core/app_export.dart';
 import '../widgets/custom_elevated_button.dart';
+import 'package:flutter/services.dart';
+import 'package:litepay/main.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key})
@@ -21,7 +25,7 @@ class SignInScreen extends StatelessWidget {
                 height: 112.v,
                 width: 360.h,
               ),
-              SizedBox(height: 81.v),
+              SizedBox(height: 70.v),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
@@ -36,33 +40,32 @@ class SignInScreen extends StatelessWidget {
               LoginForm(),
               SizedBox(height: 9.v),
               
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: "New user? ",
-                      style: CustomTextStyles.bodySmallff2f2f2f,
-                    ),
-
-                    // TODO: look at this commented block of code
-                    /**                                  // Within the `FirstRoute` widget
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const SecondRoute()),
-                      );
-                    }
-                    */
-
-                    TextSpan(
-                      text: "Sign Up",
-                      style: CustomTextStyles.bodySmallff9b03d0,
-                    ),
-                  ],
+              TextButton(
+                onPressed: () {
+                   Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignUpScreen()));
+                },
+                child: RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: "New user? ",
+                        style: CustomTextStyles.bodySmallff2f2f2f,
+                      ),
+              
+                      TextSpan(
+                        text: "Sign Up",
+                        style: CustomTextStyles.bodySmallff9b03d0,
+                      ),
+                    ],
+                  ),
+                  textAlign: TextAlign.left,
                 ),
-                textAlign: TextAlign.left,
               ),
               SizedBox(height: 98.v),
+              Expanded(
+                child: Container()
+              ),
               CustomImageView(
                 imagePath: ImageConstant.imgVector20,
                 height: 155.v,
@@ -85,6 +88,9 @@ _LoginFormState createState() => _LoginFormState();
 class _LoginFormState extends State<LoginForm> {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  static String username = "ace";
+  static String password = "ace";
+  static String state = "Forgot password";
   bool _isPasswordVisible = false;
 
   @override
@@ -101,34 +107,43 @@ class _LoginFormState extends State<LoginForm> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          TextField(
-            controller: _usernameController,
-            decoration: InputDecoration(
-              hintText: 'Username',
-              labelText: 'Username',
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-              hintStyle: TextStyle(color: Colors.black),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _usernameController,
+              decoration: InputDecoration(
+                hintText: 'Username',
+                labelText: 'Username',
+                border: OutlineInputBorder(),
+                contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                hintStyle: TextStyle(color: Colors.black),
+              ),
+               inputFormatters: [
+                FilteringTextInputFormatter.deny(RegExp(r'\s')), // Deny spaces
+              ],
             ),
           ),
           SizedBox(height: 16.0),
-          TextField(
-            controller: _passwordController,
-            obscureText: !_isPasswordVisible,
-            
-            decoration: InputDecoration(
-              hintText: 'Password',
-              labelText: 'Password',
-              contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-              suffixIcon: IconButton(
-                icon: Icon(
-                  _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _passwordController,
+              obscureText: !_isPasswordVisible,
+              decoration: InputDecoration(
+                hintText: 'Password',
+                labelText: 'Password',
+                border: OutlineInputBorder(),
+                contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isPasswordVisible = !_isPasswordVisible;
+                    });
+                  },
                 ),
-                onPressed: () {
-                  setState(() {
-                    _isPasswordVisible = !_isPasswordVisible;
-                  });
-                },
               ),
             ),
           ),
@@ -136,20 +151,52 @@ class _LoginFormState extends State<LoginForm> {
                 alignment: Alignment.centerRight,
                 child: Padding(
                   padding: EdgeInsets.only(right: 21.h),
-                  child: Text(
-                    "Forgot password?",
-                    style: CustomTextStyles.bodySmall12,
+                  child: TextButton(
+                    child: Text(
+                      state,
+                      style: CustomTextStyles.bodySmall12,
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignInThreeScreen()));
+                    },
                   ),
                 ),
               ),
-          SizedBox(height: 16.0),
-          CustomElevatedButton(
-                text: "Sign In",
-                margin: EdgeInsets.only(
-                  left: 40.h,
-                  right: 42.h,
-                ),
+          (state == "Incorrect password") ? Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 5.0),              
+              TextButton(
+                child: Text("Forgot Password"),
+                onPressed: () {
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignInThreeScreen()));
+                },
               ),
+              SizedBox(height: 5.0)
+            ],
+          )
+          :
+          Container(),
+          SizedBox(height: 10.0),
+          CustomElevatedButton(
+            onPressed: () {                  
+              setState(() {
+                    if(_usernameController.text == username && _passwordController.text == password) {
+                    Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) =>HomePage()));
+                    state = "Forgot password";
+                }
+                  state = "Incorrect password";
+                });
+            },
+            text: "Sign In",
+            margin: EdgeInsets.only(
+              left: 40.h,
+              right: 42.h,
+            ),
+          ),
         ],
       ),
     );

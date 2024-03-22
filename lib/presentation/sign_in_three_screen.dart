@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:litepay/presentation/sign_in_five_screen.dart';
+import 'package:litepay/presentation/sign_in_six_screen.dart';
 import '../core/app_export.dart';
 import '../widgets/custom_elevated_button.dart';
 
-class SignInThreeScreen extends StatelessWidget {
+ 
+class SignInThreeScreen extends StatefulWidget {
   const SignInThreeScreen({Key? key})
       : super(
           key: key,
         );
+  @override
+  State<SignInThreeScreen> createState() => _SignInThreeScreenState();
+}
 
+class _SignInThreeScreenState extends State<SignInThreeScreen> {
+  TextEditingController _emailController = TextEditingController();
+   static const String email = "ace@gmail.com"; //Default email for testing
+   String state = "";
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,16 +47,53 @@ class SignInThreeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15.v),
-              _buildSixtyOne(context),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                  hintText: 'Email',
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                  hintStyle: TextStyle(color: Colors.black),
+                  ),  
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  margin: EdgeInsets.only(right: 10),
+                  child: (state == "You have entered an Incorrect email") ?
+                  Text(
+                    "You have entered an Incorrect email",
+                    style: TextStyle(color: Colors.red, fontSize: 14)
+                    )
+                  :
+                  Text(""),
+                )
+              ),
               SizedBox(height: 54.v),
+              
               CustomElevatedButton(
                 text: "Send",
                 margin: EdgeInsets.only(
                   left: 42.h,
                   right: 40.h,
                 ),
+                onPressed: () {
+                  setState(() {
+                    if(_emailController.text == email) {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignInFiveScreen()));
+                    }
+                    state = "You have entered an Incorrect email";
+                  });
+                }              
               ),
               Spacer(
+
+      
                 flex: 60,
               ),
               CustomImageView(
@@ -85,6 +132,10 @@ class SignInThreeScreen extends StatelessWidget {
             height: 20.adaptSize,
             width: 20.adaptSize,
             margin: EdgeInsets.only(bottom: 59.v),
+            color: Colors.black54,
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -94,56 +145,6 @@ class SignInThreeScreen extends StatelessWidget {
             child: Text(
               "Forgot Password",
               style: CustomTextStyles.titleSmallOnPrimaryBold,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// Section Widget
-  Widget _buildSixtyOne(BuildContext context) {
-    return SizedBox(
-      height: 42.v,
-      width: 320.h,
-      child: Stack(
-        alignment: Alignment.topLeft,
-        children: [
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 33.v,
-              width: 320.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  5.h,
-                ),
-                border: Border.all(
-                  color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
-                  width: 1.h,
-                ),
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Container(
-              height: 19.v,
-              width: 69.h,
-              margin: EdgeInsets.only(left: 13.h),
-              decoration: BoxDecoration(
-                color: theme.colorScheme.onPrimary,
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: EdgeInsets.only(left: 16.h),
-              child: Text(
-                "Email",
-                style: CustomTextStyles.bodySmall12,
-              ),
             ),
           ),
         ],

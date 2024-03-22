@@ -12,13 +12,8 @@ import '../presentation/sign_in_six_screen.dart';
 import '../presentation/sign_in_seven_screen.dart';
 import '../presentation/sign_in_eight_screen.dart';
 //import '../presentation/android_large_eleven_screen.dart';
-import '../presentation/sign_up_two_screen.dart';
-import '../presentation/sign_up_three_screen.dart';
 import '../presentation/sign_up_screen.dart';
 import '../presentation/sign_up_one_screen.dart';
-import '../presentation/sign_up_four_screen.dart';
-import '../presentation/sign_up_success_screen.dart';
-import '../presentation/home_screen_container_screen.dart';
 import '../presentation/home_screen_one_screen.dart';
 import '../presentation/notification_one_screen.dart';
 import '../presentation/notification_screen.dart';
@@ -216,13 +211,8 @@ class AppRoutes {
     signInSevenScreen: (context) => SignInSevenScreen(),
     signInEightScreen: (context) => SignInEightScreen(),
     //androidLargeElevenScreen: (context) => AndroidLargeElevenScreen(),
-    signUpTwoScreen: (context) => SignUpTwoScreen(),
-    signUpThreeScreen: (context) => SignUpThreeScreen(),
     signUpScreen: (context) => SignUpScreen(),
     signUpOneScreen: (context) => SignUpOneScreen(),
-    signUpFourScreen: (context) => SignUpFourScreen(),
-    signUpSuccessScreen: (context) => SignUpSuccessScreen(),
-    homeScreenContainerScreen: (context) => HomeScreenContainerScreen(),
     homeScreenOneScreen: (context) => HomeScreenOneScreen(),
     notificationOneScreen: (context) => NotificationOneScreen(),
     notificationScreen: (context) => NotificationScreen(),

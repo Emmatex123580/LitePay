@@ -13,6 +13,15 @@ class HomeScreenPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: Drawer(
+          backgroundColor: Colors.black,
+          width: 200,
+          child: ListView(
+            children: [
+              ListTile()
+            ]
+          )
+        ),
         body: Container(
           width: double.maxFinite,
           decoration: AppDecoration.white,
@@ -171,13 +180,8 @@ class HomeScreenPage extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: 1.h),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomImageView(
-            imagePath: ImageConstant.imgLists,
-            height: 24.adaptSize,
-            width: 24.adaptSize,
-          ),
           Padding(
             padding: EdgeInsets.only(bottom: 2.v),
             child: Text(
@@ -241,12 +245,18 @@ class HomeScreenPage extends StatelessWidget {
                       width: 16.adaptSize,
                       padding: EdgeInsets.symmetric(vertical: 1.v),
                       decoration: AppDecoration.outlineOnPrimary,
-                      child: CustomImageView(
-                        imagePath: ImageConstant.imgCalculator,
-                        height: 11.v,
-                        width: 13.h,
-                        alignment: Alignment.bottomRight,
-                      ),
+                      child: Center(
+                        child: IconButton(
+                          onPressed: () {
+                            // TODO implement an action
+                          },
+                          icon: Icon(
+                            Icons.add_card_outlined,
+                            color: Colors.white,
+                            size: 10.0,
+                          ),
+                        ),
+                      )
                     ),
                     SizedBox(height: 1.v),
                     Text(
@@ -260,16 +270,14 @@ class HomeScreenPage extends StatelessWidget {
                     Container(
                       height: 16.adaptSize,
                       width: 16.adaptSize,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 1.h,
-                        vertical: 2.v,
-                      ),
+                      padding: EdgeInsets.all(2.0),
                       decoration: AppDecoration.outlineOnPrimary,
-                      child: CustomImageView(
-                        imagePath: ImageConstant.imgReply,
-                        height: 10.v,
-                        width: 12.h,
-                        alignment: Alignment.center,
+                      child: Center(
+                        child: Icon(
+                          Icons.account_balance_wallet_outlined,
+                          color: const Color.fromARGB(219, 255, 255, 255),
+                          size: 10.0,
+                        ),
                       ),
                     ),
                     SizedBox(height: 1.v),
@@ -284,13 +292,17 @@ class HomeScreenPage extends StatelessWidget {
                     Container(
                       height: 16.adaptSize,
                       width: 16.adaptSize,
-                      padding: EdgeInsets.all(2.h),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 1.h,
+                        vertical: 2.v
+                      ),
                       decoration: AppDecoration.outlineOnPrimary,
-                      child: CustomImageView(
-                        imagePath: ImageConstant.imgClock,
-                        height: 10.adaptSize,
-                        width: 10.adaptSize,
-                        alignment: Alignment.center,
+                      child: Center(
+                        child: Icon(
+                            Icons.history_outlined,
+                            size: 10.0,
+                            color: Colors.white,
+                          ),
                       ),
                     ),
                     Text(
@@ -306,7 +318,10 @@ class HomeScreenPage extends StatelessWidget {
       ),
     );
   }
+  
 
+
+  }
   /// Section Widget
   Widget _buildTaskRow(BuildContext context) {
     return Padding(
@@ -337,7 +352,7 @@ class HomeScreenPage extends StatelessWidget {
               Card(
                 clipBehavior: Clip.antiAlias,
                 elevation: 0,
-                margin: EdgeInsets.all(0),
+                margin: EdgeInsets.all(1.0),
                 color: appTheme.purple10001,
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
@@ -557,4 +572,4 @@ class HomeScreenPage extends StatelessWidget {
       ],
     );
   }
-}
+
