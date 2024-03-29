@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:litepay/presentation/home_screen_page.dart';
 import 'package:litepay/presentation/notification_one_screen.dart';
-import 'package:litepay/presentation/notification_screen.dart';
 import 'package:litepay/presentation/sign_in_screen.dart';
 import 'core/app_export.dart';
 import 'core/size_utils.dart';
@@ -31,14 +31,13 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'litepay',
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.signInScreen,   //it was signInScreen
+          //initialRoute: HomePage(),   //it was AppRoutes.signInScreen or AppRoutes.splashScreen
           routes: AppRoutes.routes,
-          //home: SignInScreen()
+          home: HomePage()  //FundWalletAtmMonnify()
         );
-      },
+      }
     );
   }
-
 }
 class HomePage extends StatefulWidget {
   @override
@@ -52,7 +51,7 @@ class _MyHomePageState extends State<HomePage> {
     HomeScreenPage(),
     NotificationOneScreen(),  // Replace with your home page widget
     Text('Search Page'),  // Replace with your search page widget
-    Text('Referrals Page'),  // Replace with your profile page widget
+    Text('Profiles Page'),  // Replace with your profile page widget
   ];
 
   void _onItemTapped(int index) {
@@ -68,17 +67,23 @@ class _MyHomePageState extends State<HomePage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items:  <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
-            label: 'Home',
+            label: "Home"
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_outlined),
+            icon:  Icon(Icons.notifications_outlined),
             label: 'Notifications',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.campaign_outlined),
+            icon: SvgPicture.asset(
+                    "assets/images/img_nav_referrals.svg",
+                    width: 20,
+                    height: 20,
+                    color: (_selectedIndex == 2) ? Color(0XFF9B03D0) : Colors.grey
+                  
+                  ),
             label: 'Referrals',
           ),
           BottomNavigationBarItem(

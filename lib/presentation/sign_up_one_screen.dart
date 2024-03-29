@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:litepay/presentation/home_screen_page.dart';
+import 'package:litepay/main.dart';
 import 'package:litepay/presentation/sign_in_three_screen.dart';
 import '../core/app_export.dart';
 import '../widgets/custom_elevated_button.dart';
@@ -30,11 +30,12 @@ class SignUpOneScreen extends StatelessWidget {
                     context: context,
                     isDismissible: false,
                     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
-                    builder: (BuildContext context0) {
+                    builder: (BuildContext context) {
                       return Container(
                         height: 300,
                         decoration: BoxDecoration(
                           color: Colors.white,
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -282,7 +283,7 @@ class _LoginFormState extends State<LoginForm> {
               setState(() {
                     if(_usernameController.text == username && _passwordController.text == password) {
                     Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => HomeScreenPage()));
+                    MaterialPageRoute(builder: (context) => HomePage()));
                     state = "Forgot password";
                 }
                   state = "Incorrect password";

@@ -90,6 +90,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               height: 250,
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
+                                                borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
                                                
                                               ),
                                               child: Column(
@@ -111,7 +112,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                         children: [
                                                           TextSpan(
                                                             text: "    Your registration was\n",
-                                                            style: TextStyle(fontSize: 18, color: Colors.black)
+                                                            style: TextStyle(fontSize: 18, color: Colors.black, fontFamily: "Poppins")
                                                           ),
                                                                                                   
                                                           TextSpan(

@@ -51,7 +51,7 @@ class ImageConstant {
   static String imgPricing = '$imagePath/img_pricing.svg';
 
   static String imgLetsIconsSettingLineLight =
-      '$imagePath/img_lets_icons_setting_line_light.svg';
+      '$imagePath/mgLetsIconsSettingLineLight';
 
   static String imgProfile = '$imagePath/img_profile.svg';
 

@@ -188,7 +188,7 @@ class _HomeScreenOneScreenState extends State<HomeScreenOneScreen> {
             padding: EdgeInsets.only(bottom: 2.v),
             child: Text(
               "Home",
-              style: theme.textTheme.titleSmall,
+              
             ),
           ),
           SizedBox(

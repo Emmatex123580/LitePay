@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:litepay/main.dart';
+import 'package:litepay/widgets/custom_icon_button.dart';
 import '../core/app_export.dart';
 import 'home_screen_page.dart';
 import '../widgets/custom_bottom_bar.dart';
@@ -12,6 +14,10 @@ class NotificationOneScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    
+
     return SafeArea(
         child: Scaffold(
             body: Container(
@@ -23,10 +29,14 @@ class NotificationOneScreen extends StatelessWidget {
                       child: Row(children: [
                         CustomImageView(
                             imagePath: ImageConstant.imgArrowLeft,
-                            height: 24.adaptSize,
-                            width: 24.adaptSize,
+                            height: 30.adaptSize,
+                            width: 30.adaptSize,
                             onTap: () {
-                              Navigator.pop(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => HomePage()),
+                              );
+            
                             }),
                         Padding(
                             padding: EdgeInsets.only(left: 92.h, bottom: 2.v),
@@ -44,7 +54,7 @@ class NotificationOneScreen extends StatelessWidget {
                           .titleMediumOnPrimaryContainerSemiBold),
                   SizedBox(height: 8.v),
                   Container(
-                      width: 240.h,
+                      width: 300.h,
                       margin: EdgeInsets.symmetric(horizontal: 39.h),
                       child: Text(
                           "To get notifications, try performing transactions",
@@ -54,6 +64,263 @@ class NotificationOneScreen extends StatelessWidget {
                           style: CustomTextStyles.bodyMedium14)),
                   SizedBox(height: 22.v),
                   CustomOutlinedButton(
+                    onPressed: () {
+                       showModalBottomSheet(
+                    context: context,
+                    isDismissible: true,
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+                    builder: (BuildContext context) {
+                      return Container(
+                        height: 400,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            
+                            Text(
+                              "Services",
+                              style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w500)
+                            ),
+                            Row(
+                              children: [
+                                 Container(
+                                  width: screenWidth * 0.33,
+                                   child: Center(
+                                     child: Column(
+                                      children: [
+                                        CustomIconButton(
+                                          height: 30.adaptSize,
+                                          width: 30.adaptSize,
+                                          padding: EdgeInsets.all(5.h),
+                                          decoration: IconButtonStyleHelper.outlinePrimary,
+                                          child: CustomImageView(
+                                            imagePath: ImageConstant.imgUser,
+                                          ),
+                                        ),
+                                        SizedBox(height: 2.v),
+                                        Text(
+                                          "Airtime",
+                                          style: TextStyle(
+                                            fontFamily: "Poppins",
+                                            fontSize: 12
+                                          ),
+                                        ),
+                                      ],
+                                                                   ),
+                                   ),
+                                 ),
+                  
+                                Container(
+                                  width: screenWidth * 0.33,
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        CustomIconButton(
+                                          height: 30.adaptSize,
+                                          width: 30.adaptSize,
+                                          padding: EdgeInsets.all(5.h),
+                                          decoration: IconButtonStyleHelper.outlinePrimary,
+                                          child: CustomImageView(
+                                            imagePath: ImageConstant.imgMingcuteTransferLine,
+                                          ),
+                                        ),
+                                        SizedBox(height: 2.v),
+                                        Text(
+                                          "Data",
+                                          style: TextStyle(
+                                            fontFamily: "Poppins",
+                                            fontSize: 12
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                
+                                Container(
+                                  width: screenWidth * 0.33,
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        CustomIconButton(
+                                          height: 30.adaptSize,
+                                          width: 30.adaptSize,
+                                          padding: EdgeInsets.all(5.h),
+                                          decoration: IconButtonStyleHelper.outlinePrimary,
+                                          child: CustomImageView(
+                                            imagePath: ImageConstant.imgStar,
+                                          ),
+                                        ),
+                                        SizedBox(height: 2.v),
+                                        Text(
+                                          "Mega Data",
+                                          style: TextStyle(
+                                            fontFamily: "Poppins",
+                                            fontSize: 12
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                
+                              ]
+                            ),
+            
+                            Row(
+                              children: [
+                                 Container(
+                                  width: screenWidth * 0.33,
+                                   child: Center(
+                                     child: Column(
+                                      children: [
+                                        CustomIconButton(
+                                          height: 30.adaptSize,
+                                          width: 30.adaptSize,
+                                          padding: EdgeInsets.all(5.h),
+                                          decoration: IconButtonStyleHelper.outlinePrimary,
+                                          child: CustomImageView(
+                                            imagePath: ImageConstant.imgUser,
+                                          ),
+                                        ),
+                                        SizedBox(height: 2.v),
+                                        Text(
+                                          "Cable Sub",
+                                          style: TextStyle(
+                                            fontFamily: "Poppins",
+                                            fontSize: 12
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                   ),
+                                 ),
+                                
+                                Container(
+                                  width: screenWidth * 0.33,
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        CustomIconButton(
+                                          height: 30.adaptSize,
+                                          width: 30.adaptSize,
+                                          padding: EdgeInsets.all(5.h),
+                                          decoration: IconButtonStyleHelper.outlinePrimary,
+                                          child: CustomImageView(
+                                            imagePath: ImageConstant.imgMingcuteTransferLine,
+                                          ),
+                                        ),
+                                        SizedBox(height: 2.v),
+                                        Text(
+                                          "Betting",
+                                          style: TextStyle(
+                                            fontFamily: "Poppins",
+                                            fontSize: 12
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                
+                                Container(
+                                  width: screenWidth * 0.33,
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        CustomIconButton(
+                                          height: 30.adaptSize,
+                                          width: 30.adaptSize,
+                                          padding: EdgeInsets.all(5.h),
+                                          decoration: IconButtonStyleHelper.outlinePrimary,
+                                          child: CustomImageView(
+                                            imagePath: ImageConstant.imgHealthiconsEle,
+                                          ),
+                                        ),
+                                        SizedBox(height: 2.v),
+                                        Text(
+                                          "Electriicity",
+                                          style: TextStyle(
+                                            fontFamily: "Poppins",
+                                            fontSize: 12
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                
+                              ]
+                            ),
+                            Row(
+                              children: [
+                                 Container(
+                                  width: screenWidth * 0.33,
+                                   child: Center(
+                                     child: Column(
+                                       children: [
+                                         CustomIconButton(
+                                           height: 30.adaptSize,
+                                           width: 30.adaptSize,
+                                           padding: EdgeInsets.all(5.h),
+                                           decoration: IconButtonStyleHelper.outlinePrimary,
+                                           child: CustomImageView(
+                                             imagePath: ImageConstant.imgUser,
+                                           ),
+                                         ),
+                                         SizedBox(height: 2.v),
+                                        Text(
+                                          "Educational PIN",
+                                          style: TextStyle(
+                                            fontFamily: "Poppins",
+                                            fontSize: 12
+                                          ),
+                                        ),
+                                       ],
+                                     ),
+                                   ),
+                                 ),
+                                 
+            
+                                Container(
+                                  width: screenWidth * 0.33,
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        CustomIconButton(
+                                          height: 30.adaptSize,
+                                          width: 30.adaptSize,
+                                          padding: EdgeInsets.all(5.h),
+                                          decoration: IconButtonStyleHelper.outlinePrimary,
+                                          child: CustomImageView(
+                                            imagePath: ImageConstant.imgMingcuteTransferLine,
+                                          ),
+                                        ),
+                                        SizedBox(height: 2.v),
+                                        Text(
+                                          "Join Affiliate",
+                                          style: TextStyle(
+                                            fontFamily: "Poppins",
+                                            fontSize: 12
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(width: screenWidth * 0.33,)
+                              ]
+                            ) 
+                          ]
+                        )
+                        
+                      );
+                    }
+                  );
+                    },
                       height: 30.v,
                       width: 110.h, 
                       text: "Start transaction",
