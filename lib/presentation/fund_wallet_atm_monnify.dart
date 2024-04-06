@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litepay/presentation/payment_process_screen.dart';
 import 'package:litepay/widgets/custom_elevated_button.dart';
 
 
@@ -21,7 +22,7 @@ class _FundWalletAtmMonnifyState extends State<FundWalletAtmMonnify> {
         appBar: AppBar(
           title: Text(
             "ATM Payment",
-            style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w200)
+            style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w100)
           ),
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
@@ -38,7 +39,7 @@ class _FundWalletAtmMonnifyState extends State<FundWalletAtmMonnify> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: screenHeight * 0.08),
+                SizedBox(height: screenHeight * 0.1),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -48,7 +49,7 @@ class _FundWalletAtmMonnifyState extends State<FundWalletAtmMonnify> {
                   ),
                   ],
                 ),
-        
+          
                 //Amount container
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -56,7 +57,7 @@ class _FundWalletAtmMonnifyState extends State<FundWalletAtmMonnify> {
                     Container(
                       width: screenWidth * 0.9,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(225, 207, 206, 206),
+                        color:  Color(0XFFF5F5F5),
                         borderRadius: BorderRadius.circular(20.0),                
                         ),
                       child: TextField(
@@ -72,7 +73,7 @@ class _FundWalletAtmMonnifyState extends State<FundWalletAtmMonnify> {
                   ],
                 ),
                 SizedBox(height: screenHeight * 0.08),
-        
+          
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -82,7 +83,7 @@ class _FundWalletAtmMonnifyState extends State<FundWalletAtmMonnify> {
                   ),
                   ],
                 ),
-        
+          
                 //Amount + charge container widget
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -90,11 +91,11 @@ class _FundWalletAtmMonnifyState extends State<FundWalletAtmMonnify> {
                     Container(
                       width: screenWidth * 0.9,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(225, 207, 206, 206),
+                        color:  Color(0XFFF5F5F5),
                         borderRadius: BorderRadius.circular(20.0),                
                         ),
                       child: TextField(
-                        controller: amountController_1,
+                        controller: amountController_2,
                         decoration: InputDecoration(
                           hintText: "₦  Amount",
                           contentPadding: EdgeInsets.all(10.0),
@@ -106,11 +107,14 @@ class _FundWalletAtmMonnifyState extends State<FundWalletAtmMonnify> {
                   ],
                 ),
                 SizedBox(height: screenHeight * 0.09),
-        
+          
                 // Payment Button widget
                 CustomElevatedButton(
                   onPressed: () {                  
-                    //TODO: Implement an action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PaymentProcessScreen()),
+                    );
                     },                
                   text: "Continue with payment",
                   margin: EdgeInsets.only(
@@ -118,7 +122,7 @@ class _FundWalletAtmMonnifyState extends State<FundWalletAtmMonnify> {
                     right: 10,
                   ),
               ),
-        
+          
               Row(
                 mainAxisAlignment: MainAxisAlignment.center, 
                 children: [

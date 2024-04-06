@@ -1,14 +1,15 @@
-2024/03/27-20:05:12.527 3584 Reusing MANIFEST C:\Users\BRANDON\AppData\Local\Temp\flutter_tools.295905d9\flutter_tools_chrome_device.df575bbc\Default\shared_proto_db/MANIFEST-000001
-2024/03/27-20:05:12.529 3584 Recovering log #23
-2024/03/27-20:05:12.530 3584 Reusing old log C:\Users\BRANDON\AppData\Local\Temp\flutter_tools.295905d9\flutter_tools_chrome_device.df575bbc\Default\shared_proto_db/000023.log 
-2024/03/27-20:05:12.531 3584 Delete type=0 #3
-2024/03/27-20:05:12.531 3584 Delete type=0 #4
-2024/03/27-20:05:12.531 3584 Delete type=0 #7
-2024/03/27-20:05:12.531 3584 Delete type=2 #8
-2024/03/27-20:05:12.531 3584 Delete type=0 #10
-2024/03/27-20:05:12.532 3584 Delete type=2 #11
-2024/03/27-20:05:12.532 3584 Delete type=0 #13
-2024/03/27-20:05:12.532 3584 Delete type=2 #14
-2024/03/27-20:05:12.532 3584 Delete type=0 #16
-2024/03/27-20:05:12.533 3584 Delete type=2 #17
-2024/03/27-20:05:12.533 3584 Delete type=0 #19
+2024/03/31-19:10:21.104 26f0 Reusing MANIFEST C:\Users\BRANDON\AppData\Local\Temp\flutter_tools.265cb51c\flutter_tools_chrome_device.ed4b9f9f\Default\shared_proto_db/MANIFEST-000001
+2024/03/31-19:10:21.106 26f0 Recovering log #26
+2024/03/31-19:10:21.107 26f0 Reusing old log C:\Users\BRANDON\AppData\Local\Temp\flutter_tools.265cb51c\flutter_tools_chrome_device.ed4b9f9f\Default\shared_proto_db/000026.log 
+2024/03/31-19:10:21.108 26f0 Delete type=0 #3
+2024/03/31-19:10:21.109 26f0 Delete type=0 #4
+2024/03/31-19:10:21.109 26f0 Delete type=0 #7
+2024/03/31-19:10:21.109 26f0 Delete type=2 #8
+2024/03/31-19:10:21.109 26f0 Delete type=0 #10
+2024/03/31-19:10:21.109 26f0 Delete type=2 #11
+2024/03/31-19:10:21.109 26f0 Delete type=0 #13
+2024/03/31-19:10:21.109 26f0 Delete type=2 #14
+2024/03/31-19:10:21.176 26f0 Delete type=0 #16
+2024/03/31-19:10:21.176 26f0 Delete type=2 #17
+2024/03/31-19:10:21.176 26f0 Delete type=0 #19
+2024/03/31-19:10:21.176 26f0 Delete type=0 #23

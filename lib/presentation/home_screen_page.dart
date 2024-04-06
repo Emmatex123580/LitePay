@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:litepay/presentation/activation_code_screen.dart';
 import 'package:litepay/presentation/fund_wallet_atm_monnify.dart';
+import 'package:litepay/presentation/fund_wallet_atm_paystack.dart';
 import 'package:litepay/presentation/with_fingerprint_screen.dart';
 import 'package:litepay/widgets/custom_outlined_button.dart';
 import '../core/app_export.dart';
@@ -912,11 +913,11 @@ Widget _buildPropertyColumn(
     return Column(
       children: [
         CustomIconButton(
-          height: 22.adaptSize,
-          width: 22.adaptSize,
+          height: 28.adaptSize,
+          width: 28.adaptSize,
           padding: EdgeInsets.all(5.h),
           child: CustomImageView(
-            imagePath: ImageConstant.imgStar,
+            imagePath: ImageConstant.imgPepiconsPencilPeople ,
           ),
         ),
         SizedBox(height: 2.v),
@@ -937,60 +938,74 @@ void _addMoneyBottomSheet(BuildContext context) {
     isDismissible: true,
     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
     builder: (BuildContext context) {
-      return Container(
-        padding: EdgeInsets.only(left: 20, right: 20),
-        height: 400,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-             Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Select Payment method",
-                style: CustomTextStyles.titleMediumOnPrimaryContainer,
+      return SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.only(left: 20, right: 20),
+          height: 400,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+               Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Select Payment method",
+                  style: CustomTextStyles.titleMediumOnPrimaryContainer,
+                ),
+                CustomImageView(
+                  imagePath: ImageConstant.imgMaterialSymbolRedA70024x24,
+                  height: 24.adaptSize,
+                  width: 24.adaptSize,
+                  margin: EdgeInsets.only(bottom: 2.v),
+                  onTap: ()=> Navigator.pop(context),
+                ),
+              ],
+            ),
+              CustomOutlinedButton( 
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FundWalletAtmMonnify()),
+                  );
+                },
+                height: 41.v,
+                text: "Fund wallet ATM Monnify",
+                buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
+                buttonTextStyle: theme.textTheme.bodyLarge!,
               ),
-              CustomImageView(
-                imagePath: ImageConstant.imgMaterialSymbolRedA70024x24,
-                height: 24.adaptSize,
-                width: 24.adaptSize,
-                margin: EdgeInsets.only(bottom: 2.v),
-                onTap: ()=> Navigator.pop(context),
+              CustomOutlinedButton(
+                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FundWalletAtmPaystack()),
+                  );
+                },
+                height: 41.v,
+                text: "Fund wallet ATM Paystack",
+                buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
+                buttonTextStyle: theme.textTheme.bodyLarge!,
               ),
+              CustomOutlinedButton(
+                height: 41.v,
+                text: "Fund wallet Manual Bank",
+                buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
+                buttonTextStyle: theme.textTheme.bodyLarge!,
+              ),
+              CustomOutlinedButton(
+                height: 41.v,
+                text: "Fund wallet Automated bank",
+                buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
+                buttonTextStyle: theme.textTheme.bodyLarge!,
+              ),
+              CustomOutlinedButton(
+                height: 41.v,
+                text: "Airtime Funding",
+                buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
+                buttonTextStyle: theme.textTheme.bodyLarge!,
+              ),
+      
             ],
           ),
-            CustomOutlinedButton( 
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FundWalletAtmMonnify()),
-                );
-              },
-              height: 41.v,
-              text: "Fund wallet ATM Monnify",
-              buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
-              buttonTextStyle: theme.textTheme.bodyLarge!,
-            ),
-            CustomOutlinedButton(
-              height: 41.v,
-              text: "Fund wallet ATM Monnify",
-              buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
-              buttonTextStyle: theme.textTheme.bodyLarge!,
-            ),
-            CustomOutlinedButton(
-              height: 41.v,
-              text: "Fund wallet ATM Monnify",
-              buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
-              buttonTextStyle: theme.textTheme.bodyLarge!,
-            ),
-            CustomOutlinedButton(
-              height: 41.v,
-              text: "Fund wallet ATM Monnify",
-              buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
-              buttonTextStyle: theme.textTheme.bodyLarge!,
-            ),
-
-          ],
         ),
       );
     },

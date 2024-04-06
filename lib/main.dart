@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'litepay',
           debugShowCheckedModeBanner: false,
-          //initialRoute: HomePage(),   //it was AppRoutes.signInScreen or AppRoutes.splashScreen
+          initialRoute: AppRoutes.splashScreen,   //it was AppRoutes.signInScreen or AppRoutes.splashScreen
           routes: AppRoutes.routes,
           home: HomePage()  //FundWalletAtmMonnify()
         );
