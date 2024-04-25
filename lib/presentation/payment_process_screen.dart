@@ -16,8 +16,8 @@ class _PaymentProcessScreenState extends State<PaymentProcessScreen> {
       child: Scaffold(
          appBar: AppBar(
           title: Text(
-            "ATM Payment",
-            style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w100)
+            "Payment",
+            style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w500, fontSize: 14)
           ),
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
@@ -35,11 +35,10 @@ class _PaymentProcessScreenState extends State<PaymentProcessScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-
-                  // User email widget
+                  // User email
                   Text(
                     "abigailnwadike@gmail.com",
-                    style: TextStyle(fontFamily: "Poppins")
+                    style: TextStyle(fontFamily: "Poppins", fontSize: 12, fontWeight: FontWeight.w400)
                     ),
                   Icon(Icons.account_circle_outlined),
                 ]
@@ -62,11 +61,11 @@ class _PaymentProcessScreenState extends State<PaymentProcessScreen> {
                   children: [
                     Text(
                       "Total",
-                      style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w200)
+                      style: TextStyle(fontSize: 16, fontFamily: "Poppins", fontWeight: FontWeight.w400)
                     ),
                     Text(
                       "NGN 101.50",
-                      style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w600, fontSize: 30)
+                      style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w600, fontSize: 24)
                     ),
                     SizedBox(),
                     Expanded(
@@ -94,7 +93,7 @@ class _PaymentProcessScreenState extends State<PaymentProcessScreen> {
                             ),
                             Text(
                               "No payment method enabled",
-                              style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w200)
+                              style: TextStyle(fontSize: 14, fontFamily: "Poppins", fontWeight: FontWeight.w400)
                             ),
                           ]
                         )

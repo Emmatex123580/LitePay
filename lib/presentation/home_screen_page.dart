@@ -125,8 +125,10 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                           width: 44.adaptSize,
                           padding: EdgeInsets.all(10.h),
                           decoration: IconButtonStyleHelper.fillPurple,
-                          child: CustomImageView(
-                            imagePath: ImageConstant.imgUilMoneyWithdraw,
+                          child:  SvgPicture.asset(
+                              'imagePath/img_uil_money_withdraw.svg',
+                            width: 30,
+                            height: 30,
                           ),
                         ),
                         Expanded(
@@ -165,8 +167,10 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                           width: 44.adaptSize,
                           padding: EdgeInsets.all(10.h),
                           decoration: IconButtonStyleHelper.fillPurple,
-                          child: CustomImageView(
-                            imagePath: ImageConstant.imgClarityTalkBubblesLine,
+                          child: SvgPicture.asset(
+                              'imagePath/img_clarity_talk_bubbles_line.svg',
+                            width: 30,
+                            height: 30,
                           ),
                         ),
                         Padding(
@@ -297,10 +301,10 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                             Text(
                               "Pricing",
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontFamily: "Poppins",
                                 color: Color(0XFF9B03D0),
-                                fontWeight: FontWeight.w500
+                                fontWeight: FontWeight.w400
                               )
                             )
                           ]
@@ -315,15 +319,16 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                               Icons.person_outlined,
                               size: 30,
                               color: Color(0XFF9B03D0),
+                              weight: 0.0008,
                             ),
                             SizedBox(width: screenWidth * 0.1),
                             Text(
                               "Profile",
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontFamily: "Poppins",
                                 color: Color(0XFF9B03D0),
-                                fontWeight: FontWeight.w500
+                                fontWeight: FontWeight.w400
                               )
                             )
                           ]
@@ -344,10 +349,10 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                             Text(
                               "About LitePay",
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontFamily: "Poppins",
                                 color: Color(0XFF9B03D0),
-                                fontWeight: FontWeight.w500
+                                fontWeight: FontWeight.w400
                               )
                             )
                           ]
@@ -368,10 +373,10 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                             Text(
                               "Contact Us",
                                style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontFamily: "Poppins",
                                 color: Color(0XFF9B03D0),
-                                fontWeight: FontWeight.w500
+                                fontWeight: FontWeight.w400
                               )
                             )
                           ]
@@ -385,16 +390,16 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                             Icon(
                               Icons.forum_outlined,
                               size: 30,
-                              color: Color(0XFF9B03D0),
+                              color:  Color(0XFF9B03D0)
                             ),
                             SizedBox(width: screenWidth * 0.1),
                             Text(
                               "Lodge a Complaint",
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontFamily: "Poppins",
                                 color: Color(0XFF9B03D0),
-                                fontWeight: FontWeight.w500
+                                fontWeight: FontWeight.w400
                               )
                             )
                           ]
@@ -415,10 +420,10 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                             Text(
                               "Referals",
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontFamily: "Poppins",
                                 color: Color(0XFF9B03D0),
-                                fontWeight: FontWeight.w500
+                                fontWeight: FontWeight.w400
                               )
                             )
                           ]
@@ -439,10 +444,10 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                             Text(
                               "Visit a Website",
                              style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontFamily: "Poppins",
                                 color: Color(0XFF9B03D0),
-                                fontWeight: FontWeight.w500
+                                fontWeight: FontWeight.w400
                               ) 
                             )
                           ]
@@ -463,10 +468,10 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                             Text(
                               "Airtime Funding",
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontFamily: "Poppins",
                                 color: Color(0XFF9B03D0),
-                                fontWeight: FontWeight.w500
+                                fontWeight: FontWeight.w400
                               )
                             ),
                             
@@ -487,10 +492,10 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                               Text(
                                 "Log Out",
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   color: Colors.red,
                                   fontFamily: "Poppins", 
-                                  fontWeight: FontWeight.w500                             )
+                                  fontWeight: FontWeight.w400                             )
                               )
                           ]
                         ),
@@ -642,9 +647,11 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                 width: 24.adaptSize,
                 padding: EdgeInsets.all(5.h),
                 decoration: IconButtonStyleHelper.outlinePrimary,
-                child: CustomImageView(
-                  imagePath: ImageConstant.imgUser,
-                ),
+                child: SvgPicture.asset(
+                  'imagePath/img_user.svg',
+                  height: 30,
+                  width: 30,
+                ), 
               ),
               SizedBox(height: 2.v),
               Text(
@@ -686,12 +693,11 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                         width: 8.h,
                         alignment: Alignment.center,
                       ),
-                      CustomImageView(
-                        imagePath: ImageConstant.imgMingcuteTransferLine,
+                      SvgPicture.asset(
+                        'imagePath/img_mingcute_transfer_line.svg',
                         height: 5.adaptSize,
                         width: 5.adaptSize,
                         alignment: Alignment.topRight,
-                        margin: EdgeInsets.only(top: 3.v),
                       ),
                     ],
                   ),
@@ -734,8 +740,8 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                 width: 22.adaptSize,
                 padding: EdgeInsets.all(5.h),
                 decoration: IconButtonStyleHelper.outlinePrimary,
-                child: CustomImageView(
-                  imagePath: ImageConstant.imgPhSoccerBallLight,
+                child: SvgPicture.asset(
+                  'imagePath/img_ph_soccer_ball_light.svg',
                 ),
               ),
               SizedBox(height: 4.v),
@@ -752,8 +758,8 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                 width: 22.adaptSize,
                 padding: EdgeInsets.all(5.h),
                 decoration: IconButtonStyleHelper.outlinePrimary,
-                child: CustomImageView(
-                  imagePath: ImageConstant.imgFluentMdl2Education,
+                child: SvgPicture.asset(
+                  'imagePath/img_fluent_contact.svg'
                 ),
               ),
               SizedBox(height: 2.v),
@@ -838,8 +844,8 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
           height: 22.adaptSize,
           width: 22.adaptSize,
           padding: EdgeInsets.all(5.h),
-          child: CustomImageView(
-            imagePath: ImageConstant.imgHealthiconsEle,
+          child: SvgPicture.asset(
+            'imagePath/img_healthicons_ele.svg'
           ),
         ),
         SizedBox(height: 3.v),
@@ -864,8 +870,8 @@ Widget _buildCableColumn(
         height: 22.adaptSize,
         width: 22.adaptSize,
         padding: EdgeInsets.all(5.h),
-        child: CustomImageView(
-          imagePath: ImageConstant.imgStar,
+        child: SvgPicture.asset(
+          'imagePath/img_star.svg'
         ),
       ),
       SizedBox(height: 3.v),
@@ -916,8 +922,8 @@ Widget _buildPropertyColumn(
           height: 28.adaptSize,
           width: 28.adaptSize,
           padding: EdgeInsets.all(5.h),
-          child: CustomImageView(
-            imagePath: ImageConstant.imgPepiconsPencilPeople ,
+          child: SvgPicture.asset(
+            'imagePath/img_pepicons_pencil_people.svg'
           ),
         ),
         SizedBox(height: 2.v),

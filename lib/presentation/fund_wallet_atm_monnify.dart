@@ -22,7 +22,7 @@ class _FundWalletAtmMonnifyState extends State<FundWalletAtmMonnify> {
         appBar: AppBar(
           title: Text(
             "ATM Payment",
-            style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w100)
+            style: TextStyle(fontSize: 14, fontFamily: "Poppins", fontWeight: FontWeight.w500)
           ),
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,

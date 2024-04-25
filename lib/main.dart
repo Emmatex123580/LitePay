@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:litepay/presentation/fund_wallet_atm_paystack.dart';
 import 'package:litepay/presentation/home_screen_page.dart';
 import 'package:litepay/presentation/notification_one_screen.dart';
 import 'package:litepay/presentation/sign_in_screen.dart';
@@ -31,9 +32,9 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'litepay',
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.splashScreen,   //it was AppRoutes.signInScreen or AppRoutes.splashScreen
+          //initialRoute: AppRoutes.splashScreen,   //it was AppRoutes.signInScreen or AppRoutes.splashScreen
           routes: AppRoutes.routes,
-          home: HomePage()  //FundWalletAtmMonnify()
+          home: FundWalletAtmPaystack() //HomePage()
         );
       }
     );
@@ -69,7 +70,7 @@ class _MyHomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items:  <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
+            icon: Icon(Icons.home_filled),
             label: "Home"
           ),
           BottomNavigationBarItem(

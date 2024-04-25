@@ -13,6 +13,9 @@ class FundWalletAtmPaystack extends StatefulWidget {
 class _FundWalletAtmPaystackState extends State<FundWalletAtmPaystack> {
   TextEditingController amountController_1 = TextEditingController();
   TextEditingController amountController_2 = TextEditingController();
+  Color color1 = Color(0XFFA114D2);
+  Color color2 = Colors.black;
+  String payment_method = "Card";
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -22,7 +25,7 @@ class _FundWalletAtmPaystackState extends State<FundWalletAtmPaystack> {
         appBar: AppBar(
           title: Text(
             "Payment Gateway",
-            style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w100)
+            style: TextStyle(fontSize: 14, fontFamily: "Poppins", fontWeight: FontWeight.w500)
           ),
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
@@ -62,6 +65,7 @@ class _FundWalletAtmPaystackState extends State<FundWalletAtmPaystack> {
                         ),
                       child: TextField(
                         controller: amountController_1,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: "₦  Amount",
                           contentPadding: EdgeInsets.all(10.0),
@@ -74,14 +78,14 @@ class _FundWalletAtmPaystackState extends State<FundWalletAtmPaystack> {
                 ),
                 SizedBox(height: screenHeight * 0.08),
         
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                    "Amount + charge",
-                    style: TextStyle(fontFamily: "Poppins")
+                Row(                 
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                 Text(
+                 "Amount + charge",
+                  style: TextStyle(fontFamily: "Poppins")
                   ),
-                  ],
+                ],
                 ),
         
                 //Amount + charge container widget
@@ -96,6 +100,7 @@ class _FundWalletAtmPaystackState extends State<FundWalletAtmPaystack> {
                         ),
                       child: TextField(
                         controller: amountController_2,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: "₦  Amount",
                           contentPadding: EdgeInsets.all(10.0),
@@ -115,13 +120,12 @@ class _FundWalletAtmPaystackState extends State<FundWalletAtmPaystack> {
                       context: context,
                       builder: (BuildContext context) {
                         return Dialog(
-                          child: CustomDialog(),// Your custom dialog content
+                          child: _buildCustomDialog(context),// Your custom dialog content
                            backgroundColor: Colors.white.withOpacity(0.0),
                         );
                       },
                     );
-                  },
-                               
+                  },                   
                   text: "Pay",
                   margin: EdgeInsets.only(
                     left: 10,
@@ -134,15 +138,130 @@ class _FundWalletAtmPaystackState extends State<FundWalletAtmPaystack> {
       )
     );
   }
+
+ Widget _buildCustomDialog(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    return Container(
+      height: screenHeight * 0.6,
+      width: screenWidth * 0.98,
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.topRight,
+            child: IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: Container(
+                child: Icon(
+                  Icons.close,
+                  color: Color(0XFFF90808),
+                ),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Color(0XFFF90808),
+                    width: 1.0,
+                  )
+                )
+              ),
+            ),
+          ),
+          SizedBox(height: screenHeight * 0.02),
+          Expanded(
+            child: Container(
+              width: screenWidth * 0.95,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12.0)
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        "abigailnwadike@gmail.com",
+                        style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400, fontFamily: "Poppins")
+                      ),
+                      Text(
+                        "Pay NGN 510.00",
+                         style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, fontFamily: "Poppins")
+                      )
+                    ]
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(bottom: 10),
+                    color:  Color(0XFFF5F5F5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                Icons.credit_card_outlined,
+                                color: (payment_method == "Card") ? color1 : color2,
+                              ),
+                              onPressed: () {
+                                payment_method = "Card";
+                                setState(() {});
+                              },
+                            ),
+                            Text(
+                              "Card",
+                               style: TextStyle(
+                                fontSize: 13, 
+                                fontWeight: FontWeight.w500, 
+                                fontFamily: "Poppins",
+                                color: (payment_method == "Card") ? color1 : color2,
+                              )
+                            )
+                          ],
+                        ),
+                        SizedBox(width: screenWidth * 0.09),
+                        Column(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                Icons.account_balance_outlined,
+                                color: (payment_method == "Bank") ? color1 : color2,
+                              ),
+                              onPressed: () {
+                                payment_method = "Bank";
+                                setState(() {});
+                              },
+                            ),
+                            Text(
+                              "Bank", 
+                              style: TextStyle(
+                                fontSize: 13, 
+                                fontWeight: FontWeight.w500, 
+                                fontFamily: "Poppins",
+                                color: (payment_method == "Bank") ? color1 : color2,
+                              )
+                            )
+                          ],
+                        )
+                      ]
+                    )
+                  )
+                ]
+              )
+            ),
+          )
+        ]
+      )
+    );
+  }
+
 }
 
-
+/**
 //Show Dialog widget for the payment gateway page on the UI design
 class CustomDialog extends StatefulWidget {
   @override
   State<CustomDialog> createState() => _CustomDialogState();
-}
-
+  }
 class _CustomDialogState extends State<CustomDialog> {
   @override
   Widget build(BuildContext context) {
@@ -186,27 +305,70 @@ class _CustomDialogState extends State<CustomDialog> {
                 children: [
                   Column(
                     children: [
-                      Text("abigailnwadike@gmail.com"),
-                      Text("Pay NGN 510.00")
+                      Text(
+                        "abigailnwadike@gmail.com",
+                        style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400, fontFamily: "Poppins")
+                      ),
+                      Text(
+                        "Pay NGN 510.00",
+                         style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, fontFamily: "Poppins")
+                      )
                     ]
                   ),
                   Container(
+                    padding: EdgeInsets.only(bottom: 10),
                     color:  Color(0XFFF5F5F5),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        IconButton(
-                          icon: Icon(
-                            Icons.credit_card_outlined,
-                            color: Color(0XFFA114D2)
-                          ),
-                          onPressed: () {},
+                        Column(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                Icons.credit_card_outlined,
+                                color: (payment_method == "Card") ? Color(0XFFA114D2): Colors.black,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  payment_method = "Card";
+                                });
+                              },
+                            ),
+                            Text(
+                              "Card",
+                               style: TextStyle(
+                                fontSize: 13, 
+                                fontWeight: FontWeight.w500, 
+                                fontFamily: "Poppins",
+                                color: (payment_method == "Card") ? Color(0XFFA114D2): Colors.black,
+                              )
+                            )
+                          ],
                         ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.location_city,
-                            color: Color(0XFFA114D2)
-                          ),
-                          onPressed: () {},
+                        SizedBox(width: screenWidth * 0.09),
+                        Column(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                Icons.account_balance_outlined,
+                                color: (payment_method == "Bank") ? Color(0XFFA114D2): Colors.black,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  payment_method = "Bank";
+                                });
+                              },
+                            ),
+                            Text(
+                              "Bank", 
+                              style: TextStyle(
+                                fontSize: 13, 
+                                fontWeight: FontWeight.w500, 
+                                fontFamily: "Poppins",
+                                color: (payment_method == "Bank") ? Color(0XFFA114D2): Colors.black,
+                              )
+                            )
+                          ],
                         )
                       ]
                     )
@@ -220,3 +382,4 @@ class _CustomDialogState extends State<CustomDialog> {
     );
   }
 }
+*/

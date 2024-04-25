@@ -31,23 +31,25 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SizedBox(
-          width: double.maxFinite,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomImageView(
-                imagePath: ImageConstant.imgUnsplashT9X7ypci,
-                height: 104.v,
-                width: 93.h,
-              ),
-              SizedBox(height: 5.v),
-              Text(
-                "Lite Pay",
-                style: CustomTextStyles.titleMediumPrimary,
-              ),
-              SizedBox(height: 5.v),
-            ],
+        body: SingleChildScrollView(
+          child: SizedBox(
+            width: double.maxFinite,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomImageView(
+                  imagePath: ImageConstant.imgUnsplashT9X7ypci,
+                  height: 104.v,
+                  width: 93.h,
+                ),
+                SizedBox(height: 5.v),
+                Text(
+                  "Lite Pay",
+                  style: CustomTextStyles.titleMediumPrimary,
+                ),
+                SizedBox(height: 5.v),
+              ],
+            ),
           ),
         ),
       ),
