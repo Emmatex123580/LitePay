@@ -14,7 +14,7 @@ class CustomButtonStyles {
   static ButtonStyle get fillErrorContainer => ElevatedButton.styleFrom(
         backgroundColor: theme.colorScheme.errorContainer,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.h),
+          borderRadius: BorderRadius.circular(17.h),
         ),
       );
   static ButtonStyle get fillGreen => ElevatedButton.styleFrom(

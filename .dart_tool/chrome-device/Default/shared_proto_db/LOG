@@ -1,21 +1,2 @@
-2024/04/25-10:26:54.647 231c Reusing MANIFEST C:\Users\BRANDON\AppData\Local\Temp\flutter_tools.db43f4b5\flutter_tools_chrome_device.67e1c248\Default\shared_proto_db/MANIFEST-000001
-2024/04/25-10:26:54.649 231c Recovering log #32
-2024/04/25-10:26:54.649 231c Reusing old log C:\Users\BRANDON\AppData\Local\Temp\flutter_tools.db43f4b5\flutter_tools_chrome_device.67e1c248\Default\shared_proto_db/000032.log 
-2024/04/25-10:26:54.650 231c Delete type=0 #3
-2024/04/25-10:26:54.650 231c Delete type=0 #4
-2024/04/25-10:26:54.650 231c Delete type=0 #7
-2024/04/25-10:26:54.651 231c Delete type=2 #8
-2024/04/25-10:26:54.651 231c Delete type=0 #10
-2024/04/25-10:26:54.651 231c Delete type=2 #11
-2024/04/25-10:26:54.651 231c Delete type=0 #13
-2024/04/25-10:26:54.651 231c Delete type=2 #14
-2024/04/25-10:26:54.820 231c Delete type=0 #16
-2024/04/25-10:26:54.821 231c Delete type=2 #17
-2024/04/25-10:26:54.821 231c Delete type=0 #19
-2024/04/25-10:26:54.821 231c Delete type=2 #21
-2024/04/25-10:26:54.821 231c Delete type=0 #23
-2024/04/25-10:26:54.821 231c Delete type=2 #24
-2024/04/25-10:26:54.821 231c Delete type=0 #26
-2024/04/25-10:26:54.821 231c Delete type=2 #27
-2024/04/25-10:26:54.821 231c Delete type=0 #29
-2024/04/25-10:26:54.822 231c Delete type=2 #30
+2024/04/27-16:28:14.844 2608 Creating DB C:\Users\BRANDON\AppData\Local\Temp\flutter_tools.d663647\flutter_tools_chrome_device.61359561\Default\shared_proto_db since it was missing.
+2024/04/27-16:28:15.965 2608 Reusing MANIFEST C:\Users\BRANDON\AppData\Local\Temp\flutter_tools.d663647\flutter_tools_chrome_device.61359561\Default\shared_proto_db/MANIFEST-000001

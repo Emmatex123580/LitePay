@@ -1,4 +1,2 @@
-2024/04/25-10:26:53.216 f20 Reusing MANIFEST C:\Users\BRANDON\AppData\Local\Temp\flutter_tools.db43f4b5\flutter_tools_chrome_device.67e1c248\Default\Site Characteristics Database/MANIFEST-000001
-2024/04/25-10:26:53.217 f20 Recovering log #3
-2024/04/25-10:26:53.217 f20 (ignoring error) C:\Users\BRANDON\AppData\Local\Temp\flutter_tools.db43f4b5\flutter_tools_chrome_device.67e1c248\Default\Site Characteristics Database/000003.log: dropping 1138 bytes; Corruption: checksum mismatch
-2024/04/25-10:26:53.217 f20 Reusing old log C:\Users\BRANDON\AppData\Local\Temp\flutter_tools.db43f4b5\flutter_tools_chrome_device.67e1c248\Default\Site Characteristics Database/000003.log 
+2024/04/27-16:28:09.170 2d68 Creating DB C:\Users\BRANDON\AppData\Local\Temp\flutter_tools.d663647\flutter_tools_chrome_device.61359561\Default\Site Characteristics Database since it was missing.
+2024/04/27-16:28:12.867 2d68 Reusing MANIFEST C:\Users\BRANDON\AppData\Local\Temp\flutter_tools.d663647\flutter_tools_chrome_device.61359561\Default\Site Characteristics Database/MANIFEST-000001

@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'litepay',
           debugShowCheckedModeBanner: false,
-          //initialRoute: AppRoutes.splashScreen,   //it was AppRoutes.signInScreen or AppRoutes.splashScreen
+          initialRoute: AppRoutes.splashScreen,   //it was AppRoutes.signInScreen or AppRoutes.splashScreen
           routes: AppRoutes.routes,
           home: FundWalletAtmPaystack() //HomePage()
         );
@@ -47,7 +47,6 @@ class HomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-
   static List<Widget> _widgetOptions = <Widget>[
     HomeScreenPage(),
     NotificationOneScreen(),  // Replace with your home page widget

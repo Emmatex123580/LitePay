@@ -147,7 +147,24 @@ class TextThemes {
           fontFamily: 'Poppins',
           fontWeight: FontWeight.w500,
         ),
-         
+         headlineMedium: TextStyle(
+          color: Colors.black,
+          fontSize: 12.fSize,
+          fontFamily: 'Poppins',
+          fontWeight: FontWeight.w700,
+        ),
+        labelSmall:TextStyle(
+          fontFamily: "Poppins",
+          fontWeight: FontWeight.w400, 
+          fontSize: 12, 
+          color: Colors.grey
+        ),
+        displayMedium: TextStyle(
+          color: colorScheme.onPrimaryContainer.withOpacity(1),
+          fontSize: 14.fSize,
+          fontFamily: 'Poppins',
+          fontWeight: FontWeight.w700,
+        ),
       );
 }
 

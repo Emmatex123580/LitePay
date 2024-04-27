@@ -198,7 +198,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                   ),
                   SizedBox(height: 5.v),
                 ],
-              ),
+              )
             ),
           ),
         ),
