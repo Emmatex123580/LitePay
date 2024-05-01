@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:litepay/core/copy_function.dart';
 import 'package:litepay/theme/theme_helper.dart';
 
 class FundWalletAutomatedBank extends StatefulWidget {
@@ -10,15 +12,6 @@ class FundWalletAutomatedBank extends StatefulWidget {
 }
 
 class _FundWalletAutomatedBankState extends State<FundWalletAutomatedBank> {
-  void copyText(BuildContext context, text) {
-    Clipboard.setData(ClipboardData(text: text));
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: Colors.white.withOpacity(0.0),
-        content: Text('Copied to clipboard', style: theme.textTheme.titleMedium,),
-      ),
-    );
-  }
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height; //getting the device screen height
@@ -74,7 +67,7 @@ class _FundWalletAutomatedBankState extends State<FundWalletAutomatedBank> {
                               Text("8621091276", style: TextStyle(color: Colors.white)),
                               IconButton(
                                 icon: Icon(Icons.content_copy, size: 22, color: Colors.white),
-                                onPressed: () => copyText(context, "8621091276"),
+                                onPressed: () => copyText(context, "8621091276","Copied to clipboard"),
                                 tooltip: "Copy number",
                               )
                             ]

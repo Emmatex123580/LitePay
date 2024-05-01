@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           //initialRoute: AppRoutes.splashScreen,   //it was AppRoutes.signInScreen or AppRoutes.splashScreen
           routes: AppRoutes.routes,
-          home:   FundWalletAutomatedBank()
+          home:   FundWalletAutomatedBank()//HomePage()
         );
       }
     );
