@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:litepay/presentation/fund_wallet_atm_paystack.dart';
+import 'package:litepay/presentation/airtime_screen.dart';
+import 'package:litepay/presentation/fund_wallet_automated_bank.dart';
 import 'package:litepay/presentation/home_screen_page.dart';
 import 'package:litepay/presentation/notification_one_screen.dart';
 import 'package:litepay/presentation/sign_in_screen.dart';
@@ -22,7 +23,6 @@ void main() {
   ThemeHelper().changeTheme('primary');
   runApp(MyApp());
 }
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -32,9 +32,9 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'litepay',
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.splashScreen,   //it was AppRoutes.signInScreen or AppRoutes.splashScreen
+          //initialRoute: AppRoutes.splashScreen,   //it was AppRoutes.signInScreen or AppRoutes.splashScreen
           routes: AppRoutes.routes,
-          home: FundWalletAtmPaystack() //HomePage()
+          home:   FundWalletAutomatedBank()
         );
       }
     );
@@ -78,12 +78,12 @@ class _MyHomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-                    "assets/images/img_nav_referrals.svg",
-                    width: 20,
-                    height: 20,
-                    color: (_selectedIndex == 2) ? Color(0XFF9B03D0) : Colors.grey
-                  
-                  ),
+              "assets/images/img_nav_referrals.svg",
+              width: 20,
+              height: 20,
+              color: (_selectedIndex == 2) ? Color(0XFF9B03D0) : Colors.grey
+            
+            ),
             label: 'Referrals',
           ),
           BottomNavigationBarItem(

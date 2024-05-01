@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:litepay/presentation/activation_code_screen.dart';
 import 'package:litepay/presentation/fund_wallet_atm_monnify.dart';
 import 'package:litepay/presentation/fund_wallet_atm_paystack.dart';
+import 'package:litepay/presentation/fund_wallet_automated_bank.dart';
+import 'package:litepay/presentation/manual_bank.dart';
 import 'package:litepay/presentation/with_fingerprint_screen.dart';
 import 'package:litepay/widgets/custom_outlined_button.dart';
 import '../core/app_export.dart';
@@ -992,12 +994,24 @@ void _addMoneyBottomSheet(BuildContext context) {
                 buttonTextStyle: theme.textTheme.bodyLarge!,
               ),
               CustomOutlinedButton(
+                onPressed:() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ManualBankPayment()),
+                  );
+                },
                 height: 41.v,
                 text: "Fund wallet Manual Bank",
                 buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
                 buttonTextStyle: theme.textTheme.bodyLarge!,
               ),
               CustomOutlinedButton(
+                onPressed:() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FundWalletAutomatedBank()),
+                  );
+                },
                 height: 41.v,
                 text: "Fund wallet Automated bank",
                 buttonStyle: CustomButtonStyles.outlinePrimaryTL5,

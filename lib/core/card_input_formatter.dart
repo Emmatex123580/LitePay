@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 
+//Fiunction for formatting Card number in the fund_wallet_atm_paystack page
 class CardNumberFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
