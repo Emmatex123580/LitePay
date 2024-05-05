@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:litepay/presentation/activation_code_screen.dart';
+import 'package:litepay/presentation/airtime_funding.dart';
 import 'package:litepay/presentation/fund_wallet_atm_monnify.dart';
 import 'package:litepay/presentation/fund_wallet_atm_paystack.dart';
 import 'package:litepay/presentation/fund_wallet_automated_bank.dart';
@@ -215,6 +215,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
     return Container(
       width: screenWidth * 0.85, 
            decoration: BoxDecoration(
+            color: Colors.white,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(20.0),
               bottomRight: Radius.circular(20.0),
@@ -942,6 +943,7 @@ Widget _buildPropertyColumn(
 // This function returns the addMoney bottom sheet in the home screen
 void _addMoneyBottomSheet(BuildContext context) {
   showModalBottomSheet(
+    backgroundColor: Colors.white,
     context: context,
     isDismissible: true,
     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
@@ -960,13 +962,22 @@ void _addMoneyBottomSheet(BuildContext context) {
                   "Select Payment method",
                   style: CustomTextStyles.titleMediumOnPrimaryContainer,
                 ),
-                CustomImageView(
-                  imagePath: ImageConstant.imgMaterialSymbolRedA70024x24,
-                  height: 24.adaptSize,
-                  width: 24.adaptSize,
-                  margin: EdgeInsets.only(bottom: 2.v),
-                  onTap: ()=> Navigator.pop(context),
-                ),
+                IconButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  icon: Container(
+                    child: Icon(
+                      Icons.close,
+                      color: Color(0XFFF90808),
+                    ),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Color(0XFFF90808),
+                        width: 1.0,
+                      )
+                    )
+                  ),
+              ),
               ],
             ),
               CustomOutlinedButton( 
@@ -1018,6 +1029,12 @@ void _addMoneyBottomSheet(BuildContext context) {
                 buttonTextStyle: theme.textTheme.bodyLarge!,
               ),
               CustomOutlinedButton(
+                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AirtimeFunding()),
+                  );
+                },
                 height: 41.v,
                 text: "Airtime Funding",
                 buttonStyle: CustomButtonStyles.outlinePrimaryTL5,

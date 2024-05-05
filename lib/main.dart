@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:litepay/presentation/airtime_screen.dart';
-import 'package:litepay/presentation/fund_wallet_automated_bank.dart';
+import 'package:litepay/presentation/airtime_funding_payment.dart';
 import 'package:litepay/presentation/home_screen_page.dart';
 import 'package:litepay/presentation/notification_one_screen.dart';
-import 'package:litepay/presentation/sign_in_screen.dart';
 import 'core/app_export.dart';
 import 'core/size_utils.dart';
 import 'routes/app_routes.dart';
@@ -32,9 +29,9 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'litepay',
           debugShowCheckedModeBanner: false,
-          //initialRoute: AppRoutes.splashScreen,   //it was AppRoutes.signInScreen or AppRoutes.splashScreen
+          initialRoute: AppRoutes.splashScreen,   //It was AppRoutes.signInScreen or AppRoutes.splashScreen
           routes: AppRoutes.routes,
-          home:   HomePage()
+          home:  HomePage()
         );
       }
     );

@@ -165,6 +165,8 @@ class TextThemes {
           fontFamily: 'Poppins',
           fontWeight: FontWeight.w700,
         ),
+
+        
       );
 }
 

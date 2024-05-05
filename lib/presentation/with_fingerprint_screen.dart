@@ -16,7 +16,6 @@ class WithFingerprintScreen extends StatefulWidget {
 class _WithFingerprintScreenState extends State<WithFingerprintScreen> {
   @override
   Widget build(BuildContext context) {
-    
     double screenHeight = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(

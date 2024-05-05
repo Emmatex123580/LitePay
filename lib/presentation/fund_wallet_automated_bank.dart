@@ -40,12 +40,12 @@ class _FundWalletAutomatedBankState extends State<FundWalletAutomatedBank> {
                 "Pay into the acccount below and your wallet will be \nfunded automatically",
                 style: TextStyle(
                   color: Color(0XFF2F2F2F),
-                  fontSize: 16,
-                  fontFamily: "Poppinss",
+                  fontSize: 14,
+                  fontFamily: "Poppins",
                   fontWeight: FontWeight.w400
                 ),
               ),
-              SizedBox(height: screenHeight * 0.07),
+              SizedBox(height: screenHeight * 0.06),
               Expanded(
                 child: ListView.builder(
                   itemCount: 4,

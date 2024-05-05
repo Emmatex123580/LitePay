@@ -107,7 +107,7 @@ class _FundWalletAtmPaystackState extends State<FundWalletAtmPaystack> {
                         controller: amountController_2,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
-                          hintText: "₦  Amount",
+                          hintText: "\u20A6 Amount",
                           contentPadding: EdgeInsets.all(10.0),
                           border: InputBorder.none,
                         ),
@@ -126,7 +126,7 @@ class _FundWalletAtmPaystackState extends State<FundWalletAtmPaystack> {
                     barrierDismissible: false,
                     builder: (BuildContext context) {
                       return Dialog(
-                        child: _buildCustomDialog(context, setState),// Your custom dialog content
+                        child: SingleChildScrollView(child: _buildCustomDialog(context, setState)),// Your custom dialog content
                           backgroundColor: Colors.white.withOpacity(0.0),
                       );
                     },
@@ -180,105 +180,107 @@ class _FundWalletAtmPaystackState extends State<FundWalletAtmPaystack> {
             ),
             SizedBox(height: screenHeight * 0.02),
             Expanded(
-              child: Container(
-                width: screenWidth * 0.95,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.0)
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Column(
-                      children: [
-                        SizedBox(height: screenHeight * 0.03),
-                        Text(
-                          "abigailnwadike@gmail.com",
-                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400, fontFamily: "Poppins")
-                        ),
-                        Text(
-                          "Pay NGN 510.00",
-                           style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, fontFamily: "Poppins")
-                        ),
-                      ]
-                    ),
-                    SizedBox(height: screenHeight * 0.02),
-                    Container(
-                      padding: EdgeInsets.only(bottom: 10),
-                      color:  Color(0XFFF5F5F5),
-                      child: Row(
+              child: SingleChildScrollView(
+                child: Container(
+                  width: screenWidth * 0.95,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12.0)
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Column(
+                        children: [
+                          SizedBox(height: screenHeight * 0.02),
+                          Text(
+                            "abigailnwadike@gmail.com",
+                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400, fontFamily: "Poppins")
+                          ),
+                          Text(
+                            "Pay NGN 510.00",
+                             style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, fontFamily: "Poppins")
+                          ),
+                        ]
+                      ),
+                      SizedBox(height: screenHeight * 0.02),
+                      Container(
+                        padding: EdgeInsets.only(bottom: 10),
+                        color:  Color(0XFFF5F5F5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Column(
+                              children: [
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.credit_card_outlined,
+                                    color: (payment_method == "Card") ? color1 : color2,
+                                  ),
+                                  onPressed: () {
+                                    setState(() { 
+                                      payment_method = "Card";
+                                    });
+                                  },
+                                ),
+                                Text(
+                                  "Card",
+                                   style: TextStyle(
+                                    fontSize: 13, 
+                                    fontWeight: FontWeight.w500, 
+                                    fontFamily: "Poppins",
+                                    color: (payment_method == "Card") ? color1 : color2,
+                                  )
+                                )
+                              ],
+                            ),
+                            SizedBox(width: screenWidth * 0.09),
+                            Column(
+                              children: [
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.account_balance_outlined,
+                                    color: (payment_method == "Bank") ? color1 : color2,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      payment_method = "Bank";
+                                    });
+                                  },
+                                ),
+                                Text(
+                                  "Bank", 
+                                  style: TextStyle(
+                                    fontSize: 13, 
+                                    fontWeight: FontWeight.w500, 
+                                    fontFamily: "Poppins",
+                                    color: (payment_method == "Bank") ? color1 : color2,
+                                  )
+                                )
+                              ],
+                            )
+                          ]
+                        )
+                      ),
+                      (payment_method == "Card") ? _buildCard(context, setState) : _buildBank(context),
+                      SizedBox(height: screenHeight * 0.01),
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Column(
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  Icons.credit_card_outlined,
-                                  color: (payment_method == "Card") ? color1 : color2,
-                                ),
-                                onPressed: () {
-                                  setState(() { 
-                                    payment_method = "Card";
-                                  });
-                                },
-                              ),
-                              Text(
-                                "Card",
-                                 style: TextStyle(
-                                  fontSize: 13, 
-                                  fontWeight: FontWeight.w500, 
-                                  fontFamily: "Poppins",
-                                  color: (payment_method == "Card") ? color1 : color2,
-                                )
-                              )
-                            ],
-                          ),
-                          SizedBox(width: screenWidth * 0.09),
-                          Column(
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  Icons.account_balance_outlined,
-                                  color: (payment_method == "Bank") ? color1 : color2,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    payment_method = "Bank";
-                                  });
-                                },
-                              ),
-                              Text(
-                                "Bank", 
-                                style: TextStyle(
-                                  fontSize: 13, 
-                                  fontWeight: FontWeight.w500, 
-                                  fontFamily: "Poppins",
-                                  color: (payment_method == "Bank") ? color1 : color2,
-                                )
-                              )
-                            ],
-                          )
+                          Icon(Icons.lock_outline, size: 10),
+                          SizedBox(width: 5),
+                          Text("Secured by", style: theme.textTheme.bodySmall) 
                         ]
+                      ),
+                      Center(
+                        child: Text(
+                          "Paystack", 
+                          style: TextStyle(fontSize: 12, fontFamily: "Poppins", fontWeight: FontWeight.bold)
+                        )
                       )
-                    ),
-                    (payment_method == "Card") ? _buildCard(context, setState) : _buildBank(context),
-                    SizedBox(height: screenHeight * 0.02),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.lock_outline, size: 10),
-                        SizedBox(width: 5),
-                        Text("Secured by", style: theme.textTheme.bodySmall) 
-                      ]
-                    ),
-                    Center(
-                      child: Text(
-                        "Paystack", 
-                        style: TextStyle(fontSize: 12, fontFamily: "Poppins", fontWeight: FontWeight.bold)
-                      )
-                    )
-                  ] 
-                )
+                    ] 
+                  )
+                ),
               ),
             )
           ]
@@ -401,14 +403,14 @@ class _FundWalletAtmPaystackState extends State<FundWalletAtmPaystack> {
                       //you can adjsut the action of this button as needed
                       if (_formKey1.currentState!.validate()){
                         Navigator.of(context).pop();
-
+        
                       //Dialog box when payment is validated and successful
                       _paymentSuccessful(context);
                       }
                       else {
                         setState(() {
                          Navigator.of(context).pop();
-
+        
                          //Dialog box that appears when the payment is not processed
                          _paymentUnsuccessful(context);
                         } 
@@ -528,6 +530,7 @@ class _FundWalletAtmPaystackState extends State<FundWalletAtmPaystack> {
             padding: EdgeInsets.only(top: 18),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
+              color: Colors.white,
             ),
             child: Text("Do you want to cancel payment?", style: theme.textTheme.titleSmall)
           ),
