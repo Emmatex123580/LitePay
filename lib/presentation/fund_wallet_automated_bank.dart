@@ -40,7 +40,7 @@ class _FundWalletAutomatedBankState extends State<FundWalletAutomatedBank> {
                 "Pay into the acccount below and your wallet will be \nfunded automatically",
                 style: TextStyle(
                   color: Color(0XFF2F2F2F),
-                  fontSize: 14,
+                  fontSize: 12,
                   fontFamily: "Poppins",
                   fontWeight: FontWeight.w400
                 ),

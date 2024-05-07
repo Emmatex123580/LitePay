@@ -6,6 +6,8 @@ import 'package:litepay/presentation/fund_wallet_atm_monnify.dart';
 import 'package:litepay/presentation/fund_wallet_atm_paystack.dart';
 import 'package:litepay/presentation/fund_wallet_automated_bank.dart';
 import 'package:litepay/presentation/manual_bank.dart';
+import 'package:litepay/presentation/transaction_history.dart';
+import 'package:litepay/presentation/wallet_history.dart';
 import 'package:litepay/presentation/with_fingerprint_screen.dart';
 import 'package:litepay/widgets/custom_outlined_button.dart';
 import '../core/app_export.dart';
@@ -581,6 +583,10 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                   IconButton(
                     onPressed: (){
                       //TODO: Implement an action
+                       Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context)=>WalletHistory())
+                        );
                     },
                       icon: Container(
                         height: 16.adaptSize,
@@ -606,6 +612,10 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                     IconButton(
                       onPressed: () {
                         //TODO: Implement an  action
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context)=>TransactionHistory())
+                        );
                       },
                       icon: Container(
                         height: 16.adaptSize,

@@ -15,6 +15,7 @@ class WelcomeScreenTwoScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0XFF9B03D0),
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
