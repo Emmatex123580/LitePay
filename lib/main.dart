@@ -36,9 +36,9 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'litepay',
           debugShowCheckedModeBanner: false,
-         // initialRoute: AppRoutes.splashScreen,   //It was AppRoutes.signInScreen or AppRoutes.splashScreen
+          initialRoute: AppRoutes.splashScreen,   //It was AppRoutes.signInScreen or AppRoutes.splashScreen
           routes: AppRoutes.routes,
-          home: BuyDataBundle() //Replace with HomePage 
+          home: HomePage() 
         );
       }
     );

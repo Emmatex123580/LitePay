@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:litepay/core/app_export.dart';
+import 'package:litepay/main.dart';
 import 'package:litepay/theme/theme_helper.dart';
 import 'package:litepay/widgets/custom_elevated_button.dart';
 
@@ -175,7 +176,7 @@ class _AirtimeFundingPaymentState extends State<AirtimeFundingPayment> {
     );
   }
 
-  //Dialog screent o confirm or cancel payment
+  //Dialog screent to confirm or cancel payment
   Widget _confirmation(BuildContext context) {
     return Container(
       padding: EdgeInsets.fromLTRB(18, 27, 18, 18),
@@ -274,7 +275,10 @@ class _AirtimeFundingPaymentState extends State<AirtimeFundingPayment> {
             text: "Ok",
             buttonTextStyle: TextStyle(fontSize: 16),
             onPressed: () {
-             Navigator.of(context).pop();
+             Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder:(context)=>HomePage())
+             );
             }
             
           )

@@ -227,7 +227,7 @@ class _BuyDataBundleState extends State<BuyDataBundle> {
                         //Validate the form
                         _pinBottomSheet(context);
                       }
-                    },
+                    }, 
                   )
                 ]
               ),
@@ -286,7 +286,7 @@ class _BuyDataBundleState extends State<BuyDataBundle> {
 
                 SizedBox(height: 24),   
                 Text(
-                  "You are about to purchase \u20A6500 airtime for 08059941818",
+                  "You are about to purchase \u20A6500 airtel data for 08059941818",
                   style: TextStyle(fontFamily: "Poppins", fontSize:14, fontWeight: FontWeight.w400)
                 ),
                 SizedBox(height: 20),
@@ -540,7 +540,7 @@ class _BuyDataBundleState extends State<BuyDataBundle> {
                   ],
                 ),
                 Text(
-                  "You are about to purchase \u20A6500 airtime for 08059941818",
+                  "You are about to purchase \u20A6500 airtel data for 08059941818",
                   style: TextStyle(fontFamily: "Poppins", fontSize:14, fontWeight: FontWeight.w400)
                 ),
                 SizedBox(height: 24.v),
@@ -558,7 +558,7 @@ class _BuyDataBundleState extends State<BuyDataBundle> {
                 TextButton(
                   child: Text(
                     "Use PIN instead",
-                    style: CustomTextStyles.titleSmallPrimary15
+                    style: TextStyle(fontFamily: "Poppins", fontSize:12, fontWeight: FontWeight.w600, color:Color(0xFF08DE11))
                   ),
                   onPressed: (){
                     Navigator.of(context).pop();
@@ -576,7 +576,7 @@ class _BuyDataBundleState extends State<BuyDataBundle> {
 
   //This function return the bottom sheet when fingerprint is not set on device
   //It should be called when fingerprint is not set on device
-   void _FingerPrintNotSet(BuildContext context) {
+  void _FingerPrintNotSet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.white,
@@ -832,57 +832,83 @@ class _BuyDataBundleState extends State<BuyDataBundle> {
       isDismissible: false,
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
       builder: (BuildContext context) {
-        return SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(20),
-            child: Center(
-              child: Column(
-                children: [
-                  Icon(
-                    Icons.check,
-                    size: 45.adaptSize,
-                    color: Color(0xFF08DE11)
+        return Padding(
+          padding: EdgeInsets.only(left:20.h, right: 20.h),
+          child: Column(
+            children: [
+              Align( 
+                alignment:  Alignment.topRight,
+                child: IconButton(
+                  onPressed: (){
+                    Navigator.of(context).pop();
+                    pinEditingController = TextEditingController(); //Reassigning controller after been disposed
+                  },
+                  icon: Container( 
+                    height: 15.v,
+                    child: Icon(
+                      Icons.close,
+                      color: Color(0XFFF90808),
+                      size: 11.adaptSize,
                     ),
-                  SizedBox(height:  14.v),
-                  Text(
-                    "Success",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, fontFamily: "Poppins"),
-                  ),
-                  SizedBox(height:  10.v),
-                  Center(
-                    child: Text(
-                      "Payment  Success"
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Color(0XFFF90808),
+                        width: 1.0,
+                      )
                     )
                   ),
-                  SizedBox(height:  24.v),
-                  Container(
-                    height: 41.v,
-                    width: 320.h,
-                    child: ElevatedButton(
-                      child: Text(
-                        "Back to Home",
-                        style: TextStyle(fontWeight: FontWeight.w600, fontSize:14, fontFamily: "Poppins")
+                ),
+              ),
+        
+              Container(  
+                padding: EdgeInsets.only(left:8.h,  top:4.v,  bottom:4.v),
+                height: 34.v,
+                decoration: BoxDecoration(
+                  color:  Color(0xFFF5F5F5),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.search,  size:18),
+                    SizedBox(width:8.h),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Search",
+                          border: InputBorder.none,
+                          hintStyle:  theme.textTheme.labelSmall,
+                        ),
+                        cursorColor:  Colors.black
                       ),
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder:(context) => HomePage())
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:  Color(0xFF08DE11),// Background color of the button
-                        foregroundColor: Colors.white, // Text color
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0), // Button border radius
-                        )
+                    )
+                  ]
+                )
+              ),
+
+              Expanded(
+                child: ListView.builder(
+                  itemCount:  10,
+                  itemBuilder: (BuildContext context, index) {
+                    return  CustomOutlinedButton(
+                      text: "500.0MB -\u20A6140/30 days",
+                      margin: EdgeInsets.only(top:10, bottom:10),
+                      buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
+                      buttonTextStyle: TextStyle(
+                        fontSize: 16, 
+                        fontWeight: FontWeight.w600, 
+                        fontFamily:"Poppins", 
+                        color:Colors.black
                       ),
-                  
-                    ),
-                  )                                                   
-                ]
-              )
-            )
-          )
+                      onPressed: (){
+                        Navigator.of(context).pop();
+                      }
+                    );
+                  }
+                )
+              ),
+            ]
+          ),
         );
       },
     );

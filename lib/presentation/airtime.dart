@@ -17,7 +17,7 @@ class Airtime extends StatefulWidget {
 class _AirtimeState extends State<Airtime> {
   final _formKey = GlobalKey<FormState>();
   late TextEditingController network_provider = TextEditingController();//Controller for the Netwok provideer textfield
-  TextEditingController pinEditingController = TextEditingController();
+  TextEditingController pinEditingController = TextEditingController(); //Controller that holds the pin
   String currentText = "";
   bool _isChecked = false; //Variable for indicating the state of the checkbox
   @override

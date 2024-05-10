@@ -945,7 +945,7 @@ void _addMoneyBottomSheet(BuildContext context) {
       return SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.only(left: 20, right: 20),
-          height: 400,
+          height: 400.v,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
