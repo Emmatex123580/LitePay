@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:litepay/presentation/sign_in_screen.dart';
 import 'package:litepay/presentation/sign_up_one_screen.dart';
 import '../core/app_export.dart';
 import '../widgets/custom_elevated_button.dart';
@@ -63,96 +65,84 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               SizedBox(height: 28.v),
                               
                              SizedBox(height: 8.0),
-                                _buildUserName(),
-                                const SizedBox(height: 8.0),
-                                _buildEmail(),
-                                const SizedBox(height: 8.0),
-                                _buildTelephone(),
-                                const SizedBox(height: 8.0),
-                                _buildAddress(),
-                                const SizedBox(height: 8.0),
-                                _buildPassword(),
-                                const SizedBox(height:8.0),
+                              _buildUserName(),
+                              const SizedBox(height: 8.0),
+                              _buildEmail(),
+                              const SizedBox(height: 8.0),
+                              _buildTelephone(),
+                              const SizedBox(height: 8.0),
+                              _buildAddress(),
+                              const SizedBox(height: 8.0),
+                              _buildPassword(),
+                              const SizedBox(height:8.0),
 
-                                CustomElevatedButton(
-                                  text: "Get Started",
-                                  margin: EdgeInsets.symmetric(horizontal: 21.h),
-                                  onPressed: () {
-                                    final isValid = _formkey.currentState!.validate();
-                                    if(isValid) {
-                                      _formkey.currentState!.save();
-                                        showModalBottomSheet(
-                                          context: context,
-                                          isDismissible: false,
-                                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
-                                          builder: (BuildContext context) {
-                                            return Container(
-                                              height: 250,
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
-                                               
-                                              ),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                children: [
-                                                  Icon(
-                                                    Icons.check,
-                                                    size: 100,
-                                                    color: Color.fromARGB(255, 37, 229, 44),
-                                                    ),
-                                                  Text(
-                                                    "Success",
-                                                    style: TextStyle(fontSize: 28, color: Colors.black, fontWeight: FontWeight.bold),
-                                                    ),
-                                                  Center(
-                                                    child: RichText(
-                                                      text: TextSpan(
-                                                        children: [
-                                                          TextSpan(
-                                                            text: "    Your registration was\n",
-                                                            style: TextStyle(fontSize: 18, color: Colors.black, fontFamily: "Poppins")
-                                                          ),
-                                                                                                  
-                                                          TextSpan(
-                                                            text: "successfull, please login now",
-                                                            style: TextStyle(fontSize: 18, color: Colors.black)
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
+                              CustomElevatedButton(
+                                text: "Get Started",
+                                margin: EdgeInsets.symmetric(horizontal: 21.h),
+                                onPressed: () {
+                                  final isValid = _formkey.currentState!.validate();
+                                  if(isValid) {
+                                    _formkey.currentState!.save();
+                                      showModalBottomSheet(
+                                        context: context,
+                                        isDismissible: false,
+                                        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+                                        builder: (BuildContext context) {
+                                          return Container(
+                                            height: 250,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
+                                            ),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Icon(
+                                                  Icons.check,
+                                                  size: 100,
+                                                  color: Color.fromARGB(255, 37, 229, 44),
                                                   ),
-                                                  Container(
-                                                    height: 20,
-                                                    width: 100,
-                                                    child: ElevatedButton(
-                                                      child: Text(
-                                                        "Ok",
-                                                        style: TextStyle(fontWeight: FontWeight.bold)
-                                                      ),
-                                                      onPressed: () {
-                                                        Navigator.push(context,
-                                                          MaterialPageRoute(builder: (context) => SignUpOneScreen()));
-                                                      },
-                                                      style: ElevatedButton.styleFrom(
-                                                        backgroundColor:  Color.fromARGB(255, 29, 243, 36), // Background color of the button
-                                                        foregroundColor: Colors.white, // Text color
-                                                        shape: RoundedRectangleBorder(
-                                                          borderRadius: BorderRadius.circular(8.0), // Button border radius
-                                                        )
-                                                      ),
-                                                  
-                                                    ),
+                                                Text(
+                                                  "Success",
+                                                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                  ),
+                                                Center(
+                                                  child: Text(
+                                                    "Your registration  was successful, please login now.", 
+                                                    style:  TextStyle(fontSize: 18, fontFamily: "Poppins",)
                                                   )
-                                                ]
-                                              ),
-                                            );
-                                          }
-                                        );
-                                    }
-                                  },
-                                ),
+                                                ),
+                                                Container(
+                                                  height: 20.v,
+                                                  width: 100.h,
+                                                  child: ElevatedButton(
+                                                    child: Text(
+                                                      "Ok",
+                                                      style: TextStyle(fontWeight: FontWeight.bold)
+                                                    ),
+                                                    onPressed: () {
+                                                      Navigator.push(context,
+                                                        MaterialPageRoute(builder: (context) => SignUpOneScreen()));
+                                                    },
+                                                    style: ElevatedButton.styleFrom(
+                                                      backgroundColor:  Color.fromARGB(255, 29, 243, 36), // Background color of the button
+                                                      foregroundColor: Colors.white, // Text color
+                                                      shape: RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius.circular(8.0), // Button border radius
+                                                      )
+                                                    ),
+                                                
+                                                  ),
+                                                )
+                                              ]
+                                            ),
+                                          );
+                                        }
+                                      );
+                                  }
+                                },
+                              ),
                                    
                               SizedBox(height: 45.v),
                               RichText(
@@ -165,6 +155,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     TextSpan(
                                       text: "Sign In",
                                       style: CustomTextStyles.bodySmallff9b03d0,
+                                      recognizer: TapGestureRecognizer()..onTap = (){
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder:  ((context) => SignInScreen()))
+                                        );
+                                      }
                                     ),
                                   ],
                                 ),

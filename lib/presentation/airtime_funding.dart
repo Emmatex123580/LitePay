@@ -22,6 +22,21 @@ class _AirtimeFundingState extends State<AirtimeFunding> {
     network_provider.dispose();
     super.dispose();
   }
+  
+ @override
+  void initState() {
+    super.initState();
+    _amount.text = "Default Text";
+    _amount.addListener(() {
+      if (_amount.text.isEmpty) {
+        setState(() {
+          is_typing = false;
+        });
+      }
+      }
+    );
+  }
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -72,7 +87,7 @@ class _AirtimeFundingState extends State<AirtimeFunding> {
                             icon:  Icon(Icons.arrow_drop_down_outlined),
                             onPressed: () {
                                 //Call the action and drop down box here
-                                _addMoneyBottomSheet(context);
+                                _networkBottomSheet(context);
                             },
                           ),
                           contentPadding: EdgeInsets.all(10.0),
@@ -231,22 +246,10 @@ class _AirtimeFundingState extends State<AirtimeFunding> {
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _amount.text = "Default Text";
-    _amount.addListener(() {
-      if (_amount.text.isEmpty) {
-        setState(() {
-          is_typing = false;
-        });
-      }
-      }
-    );
-  }
+ 
 
   // This function calls the botom sheet tp select network provider
-  void _addMoneyBottomSheet(BuildContext context) {
+  void _networkBottomSheet(BuildContext context) {
   showModalBottomSheet(
     backgroundColor: Colors.white,
     context: context,

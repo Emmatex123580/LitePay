@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:litepay/presentation/airtime.dart';
 import 'package:litepay/presentation/airtime_funding_payment.dart';
+import 'package:litepay/presentation/airtime_screen.dart';
+import 'package:litepay/presentation/buy_data_bundle.dart';
 import 'package:litepay/presentation/home_screen_page.dart';
 import 'package:litepay/presentation/notification_one_screen.dart';
+import 'package:litepay/presentation/sign_in_screen.dart';
 import 'package:litepay/presentation/transaction_details.dart';
 import 'package:litepay/presentation/transaction_history.dart';
 import 'package:litepay/presentation/wallet_history.dart';
@@ -32,9 +36,9 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'litepay',
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.splashScreen,   //It was AppRoutes.signInScreen or AppRoutes.splashScreen
+         // initialRoute: AppRoutes.splashScreen,   //It was AppRoutes.signInScreen or AppRoutes.splashScreen
           routes: AppRoutes.routes,
-          //home: TransactionDetails() //Replace with HomePage 
+          home: BuyDataBundle() //Replace with HomePage 
         );
       }
     );

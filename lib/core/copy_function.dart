@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:litepay/theme/theme_helper.dart';
   
   
-  //Function for copying texts
+  //Function for copying texts from the flutter service package
   //display parameter - Holds the string to be displayed on copy
   //text parameter - Holds the text to be copied 
   void copyText(BuildContext context, String text, String display) {

@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 
+
+//Merged the paymentScreen and PaymentProcessScreen on the FIGMA design
 class PaymentProcessScreen extends StatefulWidget {
   const PaymentProcessScreen({super.key});
 

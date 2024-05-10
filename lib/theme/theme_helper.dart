@@ -165,7 +165,12 @@ class TextThemes {
           fontFamily: 'Poppins',
           fontWeight: FontWeight.w700,
         ),
-
+        displaySmall: TextStyle(
+          fontFamily: "Poppins",
+          fontWeight: FontWeight.w400, 
+          fontSize: 12, 
+          color: Color(0xFF2F2F2F)
+        ),
         
       );
 }

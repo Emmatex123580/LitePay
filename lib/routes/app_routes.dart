@@ -18,7 +18,6 @@ import '../presentation/home_screen_one_screen.dart';
 import '../presentation/notification_one_screen.dart';
 import '../presentation/notification_screen.dart';
 //import '../presentation/wallet_summary_screen.dart';
-import '../presentation/transaction_history_screen.dart';
 import '../presentation/transfer_screen.dart';
 import '../presentation/airtime_screen.dart';
 import '../presentation/data_three_screen.dart';
@@ -217,7 +216,6 @@ class AppRoutes {
     notificationOneScreen: (context) => NotificationOneScreen(),
     notificationScreen: (context) => NotificationScreen(),
     //walletSummaryScreen: (context) => WalletSummaryScreen(),
-    transactionHistoryScreen: (context) => TransactionHistoryScreen(),
     transferScreen: (context) => TransferScreen(),
     airtimeScreen: (context) => AirtimeScreen(),
     dataThreeScreen: (context) => DataThreeScreen(),

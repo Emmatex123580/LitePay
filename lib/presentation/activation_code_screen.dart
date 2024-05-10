@@ -16,7 +16,7 @@ class ActivationCodeScreen extends StatefulWidget {
 
 class _ActivationCodeScreenState extends State<ActivationCodeScreen> {
   String Code = "1234";
-  String code ='1234';
+  String code = "1234";
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;

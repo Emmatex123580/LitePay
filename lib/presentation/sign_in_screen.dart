@@ -17,7 +17,6 @@ class SignInScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: SizedBox(
-          width: double.maxFinite,
           child: Column(
             children: [
               CustomImageView(
@@ -43,7 +42,7 @@ class SignInScreen extends StatelessWidget {
               TextButton(
                 onPressed: () {
                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SignUpScreen()));
+                      MaterialPageRoute(builder: (context) => SignUpScreen()));
                 },
                 child: RichText(
                   text: TextSpan(
@@ -62,7 +61,7 @@ class SignInScreen extends StatelessWidget {
                   textAlign: TextAlign.left,
                 ),
               ),
-              SizedBox(height: 98.v),
+              SizedBox(height: 70.v),
               Expanded(
                 child: Container()
               ),
