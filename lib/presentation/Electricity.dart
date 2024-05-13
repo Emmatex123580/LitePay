@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:litepay/core/app_export.dart';
 import 'package:litepay/presentation/select_disco_company.dart';
@@ -5,6 +6,8 @@ import 'package:litepay/widgets/custom_elevated_button.dart';
 import 'package:litepay/widgets/custom_outlined_button.dart';
 import 'package:litepay/widgets/fadiing_progress_indicator.dart';
 import 'package:litepay/widgets/invalid_metre.dart';
+import 'package:litepay/widgets/payment_success.dart';
+import 'package:litepay/widgets/valid_metre.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 
@@ -17,7 +20,7 @@ class ElectricityScreen extends StatefulWidget {
 
 class _ElectricityScreenState extends State<ElectricityScreen> {
   final _formKey = GlobalKey<FormState>();
-  late TextEditingController network_provider = TextEditingController();//Controller for the Netwok provideer textfield
+  late TextEditingController _disco_company = TextEditingController();//Controller for the Netwok provideer textfield
   late TextEditingController  meter_type  = TextEditingController(); 
   TextEditingController pinEditingController = TextEditingController();
   String currentText = "";
@@ -28,7 +31,7 @@ class _ElectricityScreenState extends State<ElectricityScreen> {
          appBar: AppBar(
           title: Text(
             "Pay Electricity Bill",
-            style: TextStyle(fontSize: 14, fontFamily: "Poppins", fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 14.adaptSize, fontFamily: "Poppins", fontWeight: FontWeight.w500),
           ),
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
@@ -50,8 +53,8 @@ class _ElectricityScreenState extends State<ElectricityScreen> {
                 children: [
                   SizedBox(height: 12.v),
                   Text(
-                    "Empower Your Payments, Anytime, Anywhere",
-                    style: CustomTextStyles.titleSmall15
+                    "Empower Your Payments, Anytime, Anywhere.",
+                    style: TextStyle(fontSize: 14.adaptSize, fontFamily: "Poppins", fontWeight: FontWeight.w500),
                   ),
 
                   SizedBox(height: 24.v),
@@ -67,13 +70,13 @@ class _ElectricityScreenState extends State<ElectricityScreen> {
                       )
                     ),
                     child: TextFormField(
-                      controller: network_provider,
+                      controller: _disco_company,
                       readOnly:true,
                       validator: (value) {
                         //validate the value typed in the text
                       },
                       decoration: InputDecoration(
-                        hintText: (network_provider.text == "") ? "Select Disco Company" : network_provider.text,
+                        hintText: (_disco_company.text == "") ? "Select Disco Company" : _disco_company.text,
                         suffixIcon: IconButton(        
                           icon:  Icon(Icons.arrow_drop_down_outlined),
                           onPressed: () {
@@ -235,11 +238,15 @@ class _ElectricityScreenState extends State<ElectricityScreen> {
                           // Remove the fading circular progress indicator after 2 seconds
                           Navigator.of(context).pop(); // Remove the indicator
                         });
-                        InvalidMeter(context); //
+                        ValidMeter(context); //adjust the code to call InvalidMeter(context) based on feedback
                         await Future.delayed(Duration(seconds: 3), () {
                           // Remove the fading circular progress indicator after 2 seconds
                           Navigator.of(context).pop(); // Remove the indicator
                         });
+                        _pinBottomSheet(context);
+                      }
+                      else {
+                        InvalidMeter(context); // This function is called if the metre number number isinvalid
                       }
                     }, 
                   )
@@ -299,7 +306,7 @@ class _ElectricityScreenState extends State<ElectricityScreen> {
 
                 SizedBox(height: 24),   
                 Text(
-                  "You are about to purchase \u20A6500 airtel data for 08059941818",
+                  "You are about to purchase \u20A65000  for electricity",
                   style: TextStyle(fontFamily: "Poppins", fontSize:14, fontWeight: FontWeight.w400)
                 ),
                 SizedBox(height: 20),
@@ -328,12 +335,13 @@ class _ElectricityScreenState extends State<ElectricityScreen> {
                         inactiveColor: appTheme.purpleA100,
                         activeColor: appTheme.purpleA100,
                       ),
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.none,
                       controller: pinEditingController,
                       onCompleted: (v) {
-                        //TODO: Performaction with pin
+                        //TODO: validate and perform action when the pin field is completely field
                         Navigator.of(context).pop();
-                      
+                        pinEditingController = TextEditingController();
+                        PaymentSuccessful(context); //Write a condition to call PaymentUnsuccesful if unsuccessful 
                       },
                     ),
                   ),
@@ -480,7 +488,7 @@ class _ElectricityScreenState extends State<ElectricityScreen> {
                   ],
                 ),
                 Text(
-                  "You are about to purchase \u20A6500 airtel data for 08059941818",
+                  "You are about to purchase \u20A65000 for electricity",
                   style: TextStyle(fontFamily: "Poppins", fontSize:14, fontWeight: FontWeight.w400)
                 ),
                 SizedBox(height: 24.v),
@@ -498,7 +506,7 @@ class _ElectricityScreenState extends State<ElectricityScreen> {
                 TextButton(
                   child: Text(
                     "Use PIN instead",
-                    style: TextStyle(fontFamily: "Poppins", fontSize:12, fontWeight: FontWeight.w600, color:Color(0xFF08DE11))
+                    style: TextStyle(fontFamily: "Poppins", fontSize:12, fontWeight: FontWeight.w600, color: Color(0xFF9B03D0))
                   ),
                   onPressed: (){
                     Navigator.of(context).pop();
@@ -514,6 +522,96 @@ class _ElectricityScreenState extends State<ElectricityScreen> {
     );      
   }
 
+  //This function return the bottom sheet when fingerprint is not set on device
+  //It should be called when fingerprint is not set on device
+  void _FingerPrintNotSet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      isDismissible: false,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+      builder: (BuildContext context) {
+        return SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.only(top:10, bottom: 20, left:20, right:20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15)
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Confirm Transaction",
+                      style: CustomTextStyles.titleMediumOnPrimaryContainer,
+                    ),
+                    IconButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      icon: Container(
+                        child: Icon(
+                          Icons.close,
+                          color: Color(0XFFF90808),
+                        ),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Color(0XFFF90808),
+                            width: 1.0,
+                          )
+                        )
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 24.v),
+                Icon(Icons.fingerprint, size:51.adaptSize),
+                SizedBox(height: 24.v),
+                RichText(
+                  text:TextSpan(
+                    text:"Fingerprint not set, ",
+                    style: TextStyle(fontFamily: "Poppins", fontSize:14, fontWeight: FontWeight.w400),
+                    children: [
+                      TextSpan(
+                        text: "Go to settings ",
+                        style: TextStyle(
+                          fontFamily: "Poppins", 
+                          fontSize:14, 
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF9B03D0)
+                        ),
+                        recognizer: TapGestureRecognizer()..onTap = ()  {
+                          //  TODO: Implement an action here
+                        } 
+                      ),
+                      TextSpan(
+                        text: "to set up your fingerprint"
+                      ),
+                    ]
+                  )
+                ),
+                SizedBox(height: 24.v),
+                TextButton(
+                  child: Text(
+                    "Use PIN instead",
+                    style: CustomTextStyles.titleSmallPrimary15
+                  ),
+                  onPressed: (){
+                    Navigator.of(context).pop();
+                    pinEditingController = TextEditingController(); //Reassigning the controller to avoid error
+                    _FingerPrintNotSet(context);
+                  },
+                )
+
+              ]
+            )  
+          ),
+        );
+      },
+    );      
+  }
+
+  //This function calls the bottomSheet to choose meter type
    void _meterTypeBottomSheet(BuildContext context) {
     showModalBottomSheet(
       backgroundColor: Colors.white,
@@ -557,5 +655,4 @@ class _ElectricityScreenState extends State<ElectricityScreen> {
   }
 }
 
-class _fadingCircularProgressIndicator {
-}
+

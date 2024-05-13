@@ -315,7 +315,7 @@ class _BuyDataBundleState extends State<BuyDataBundle> {
                         inactiveColor: appTheme.purpleA100,
                         activeColor: appTheme.purpleA100,
                       ),
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.none,
                       controller: pinEditingController,
                       onCompleted: (v) {
                         //TODO: Performaction with pin

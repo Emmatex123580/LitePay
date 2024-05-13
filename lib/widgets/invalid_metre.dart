@@ -15,7 +15,12 @@ void InvalidMeter(BuildContext context) {
           child: Container(
             height: 40.v,
             width: 171.h,
-            child: Center(child: Text("Invalid meter number", style: TextStyle(color: Colors.white))),
+            child: Center(
+              child: Text(
+                "Invalid meter number", 
+                style: TextStyle(color:Colors.white, fontSize: 14.adaptSize)
+              )
+            ),
             decoration: BoxDecoration(
               color: Colors.red,
               borderRadius: BorderRadius.circular(17)

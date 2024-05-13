@@ -62,7 +62,7 @@ class _SelectDiscoCompanyState extends State<SelectDiscoCompany> {
                 child: ListView.builder(
                   itemCount:  10,
                   itemBuilder: (BuildContext context, index) {
-                    return  Container(
+                    return Container(
                       height: 43.7.v,
                       width:320.h,
                       padding: EdgeInsets.all(8.0),

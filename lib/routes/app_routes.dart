@@ -22,12 +22,10 @@ import '../presentation/transfer_screen.dart';
 import '../presentation/airtime_screen.dart';
 import '../presentation/data_three_screen.dart';
 import '../presentation/electricity_two_screen.dart';
-import '../presentation/select_disco_company_screen.dart';
 import '../presentation/meter_type_screen.dart';
 import '../presentation/electricity_one_screen.dart';
 //import '../presentation/electricity_screen.dart';
 import '../presentation/successful_elect_pay_screen.dart';
-import '../presentation/cable_pay_screen.dart';
 import '../presentation/select_cable_screen.dart';
 import '../presentation/betting_one_screen.dart';
 import '../presentation/betting_screen.dart';
@@ -218,12 +216,10 @@ class AppRoutes {
     airtimeScreen: (context) => AirtimeScreen(),
     dataThreeScreen: (context) => DataThreeScreen(),
     electricityTwoScreen: (context) => ElectricityTwoScreen(),
-    selectDiscoCompanyScreen: (context) => SelectDiscoCompanyScreen(),
     meterTypeScreen: (context) => MeterTypeScreen(),
     electricityOneScreen: (context) => ElectricityOneScreen(),
     //electricityScreen: (context) => ElectricityScreen(),
     successfulElectPayScreen: (context) => SuccessfulElectPayScreen(),
-    cablePayScreen: (context) => CablePayScreen(),
     selectCableScreen: (context) => SelectCableScreen(),
     bettingOneScreen: (context) => BettingOneScreen(),
     bettingScreen: (context) => BettingScreen(),
