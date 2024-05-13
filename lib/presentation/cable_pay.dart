@@ -110,6 +110,7 @@ class _CablePayScreenState extends State<CablePayScreen> {
                           icon:  Icon(Icons.arrow_drop_down_outlined),
                           onPressed: () {
                             //Call the action and drop down box here
+                            _cablePlanBottomSheet(context);
                             
                           },
                         ),
@@ -340,7 +341,7 @@ class _CablePayScreenState extends State<CablePayScreen> {
         return SingleChildScrollView(
           child: Column(
             children: [
-              Row(),
+              SizedBox(child: Row()),
 
               Container(  
                 padding: EdgeInsets.only(left:8.h,  top:4.v,  bottom:4.v),
