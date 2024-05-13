@@ -4,6 +4,7 @@ import 'package:litepay/presentation/Electricity.dart';
 import 'package:litepay/presentation/airtime.dart';
 import 'package:litepay/presentation/airtime_funding.dart';
 import 'package:litepay/presentation/buy_data_bundle.dart';
+import 'package:litepay/presentation/cable_pay.dart';
 import 'package:litepay/presentation/fund_wallet_atm_monnify.dart';
 import 'package:litepay/presentation/fund_wallet_atm_paystack.dart';
 import 'package:litepay/presentation/fund_wallet_automated_bank.dart';
@@ -405,9 +406,31 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
               ),
             ],
           ),
-          _buildCableColumn(
-            context,
-            dynamicProperty2: "Cable Sub",
+           Column(
+            children: [
+             CustomIconButton(
+                height: 24.adaptSize,
+                width: 24.adaptSize,
+                padding: EdgeInsets.all(5.h),
+                decoration: IconButtonStyleHelper.outlinePrimary,
+                child: SvgPicture.asset(
+                  'imagePath/img_mingcute_transfer_line.svg',
+                  height: 30,
+                  width: 30,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder:(context) => CablePayScreen())
+                  );
+                }, 
+              ),
+              SizedBox(height: 3.v),
+              Text(
+                "Cable Sub",
+                style: theme.textTheme.bodySmall,
+              ),
+            ],
           ),
           _buildPropertyColumn(
             context,

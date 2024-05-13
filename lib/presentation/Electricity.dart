@@ -258,6 +258,7 @@ class _ElectricityScreenState extends State<ElectricityScreen> {
       )
     );
   }
+  
   //Code block for bottom sheet to dial pin on confirmation
   void _pinBottomSheet(BuildContext context) {
     showModalBottomSheet(
