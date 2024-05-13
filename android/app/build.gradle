@@ -64,4 +64,6 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    implementation(platform("org.jetbrains.kotlin:kotlin-boom:1.7.10")) //This command ensures the app is buillt with kotlin 1.7.10
+}
