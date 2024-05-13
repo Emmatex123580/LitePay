@@ -366,6 +366,39 @@ class _CablePayScreenState extends State<CablePayScreen> {
                   ]
                 )
               ),
+
+              Expanded(
+                child: ListView.builder(
+                  itemCount:  10,
+                  itemBuilder: (BuildContext context, index) {
+                    return Container(
+                      height: 43.7.v,
+                      width:320.h,
+                      padding: EdgeInsets.all(8.0),
+                      margin: EdgeInsets.only(bottom: 4.v, top: 4.v),
+                      child: OutlinedButton(
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            Image.asset("as", width:28.h, height: 19.8.v),
+                            SizedBox(width: 8.h),
+                            Text(
+                            "",
+                              style: TextStyle(
+                                fontSize: 12, 
+                                fontWeight: FontWeight.w400, 
+                                fontFamily:"Poppins", 
+                                color:Colors.black
+                              ),
+                            )
+                          ]
+                        ),
+                        style: CustomButtonStyles.outlinePrimaryTL5,
+                      ),
+                    );
+                  }
+                )
+              ),
             ]
           )
         );

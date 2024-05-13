@@ -57,7 +57,9 @@ class _SelectDiscoCompanyState extends State<SelectDiscoCompany> {
                   ]
                 )
               ),
+
               SizedBox(height: 16.v),
+
               Expanded(
                 child: ListView.builder(
                   itemCount:  10,
@@ -90,6 +92,7 @@ class _SelectDiscoCompanyState extends State<SelectDiscoCompany> {
                   }
                 )
               ),
+              
             ],
           )
         )
