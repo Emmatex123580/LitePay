@@ -23,6 +23,7 @@ class WelcomeScreenTwoScreen extends StatelessWidget {
             color: Colors.black54
           ),
           elevation: 0.0,
+          backgroundColor: theme.colorScheme.primary
         ),
         backgroundColor: theme.colorScheme.primary,
         body: Container(
@@ -151,7 +152,7 @@ class WelcomeScreenTwoScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 51.v),
+              SizedBox(height: 41.v),
               _buildWelcomeScreenTwoButtons(context),
               SizedBox(height: 5.v),
             ],
