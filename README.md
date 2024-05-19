@@ -17,3 +17,6 @@ samples, guidance on mobile development, and a full API reference.
 
 - How to use FlutLab? Please, view our https://flutlab.io/docs
 - Join the discussion and conversation on https://flutlab.io/residents
+
+## key notes
+- The main_page.dart located in the lib/core route of the project helps in direction of screen flow depending the verification status of user.

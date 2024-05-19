@@ -24,74 +24,74 @@ class WelcomeScreenThreeScreen extends StatelessWidget {
           elevation: 0.0,
           backgroundColor: Colors.white,
         ),
-        body: Container(
-          width: double.maxFinite,
-          padding: EdgeInsets.symmetric(vertical: 39.v),
-          child: Column(
-            children: [
-              _buildImageStack(context),
-              SizedBox(height: 19.v),
-              Text(
-                "Convenience",
-                style: CustomTextStyles.headlineSmallPrimary,
-              ),
-              SizedBox(height: 1.v),
-              Container(
-                width: 288.h,
-                margin: EdgeInsets.only(
-                  left: 36.h,
-                  right: 34.h,
-                ),
-                child: Text(
-                  "All your VTU needs in one place!\n Our app is your go-to for convenient and hassle-free virtual top-ups. Manage your mobile credit with ease.",
-                  maxLines: 4,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: CustomTextStyles.bodyMedium14,
-                ),
-              ),
-              SizedBox(height: 39.v),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+        body:Container(
+              width: double.maxFinite,
+              padding: EdgeInsets.symmetric(vertical: 39.v),
+              child: Column(
                 children: [
+                  _buildImageStack(context),
+                  SizedBox(height: 19.v),
+                  Text(
+                    "Convenience",
+                    style: CustomTextStyles.headlineSmallPrimary,
+                  ),
+                  SizedBox(height: 1.v),
                   Container(
-                    height: 3.v,
-                    width: 24.h,
-                    decoration: BoxDecoration(
-                      color: appTheme.blueGray100,
-                      borderRadius: BorderRadius.circular(
-                        1.h,
-                      ),
+                    width: 288.h,
+                    margin: EdgeInsets.only(
+                      left: 36.h,
+                      right: 34.h,
+                    ),
+                    child: Text(
+                      "All your VTU needs in one place!\n Our app is your go-to for convenient and hassle-free virtual top-ups. Manage your mobile credit with ease.",
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: CustomTextStyles.bodyMedium14,
                     ),
                   ),
-                  Container(
-                    height: 3.v,
-                    width: 24.h,
-                    margin: EdgeInsets.only(left: 10.h),
-                    decoration: BoxDecoration(
-                      color: appTheme.blueGray100,
-                      borderRadius: BorderRadius.circular(
-                        1.h,
+                  SizedBox(height: 39.v),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 3.v,
+                        width: 24.h,
+                        decoration: BoxDecoration(
+                          color: appTheme.blueGray100,
+                          borderRadius: BorderRadius.circular(
+                            1.h,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  Container(
-                    height: 3.v,
-                    width: 24.h,
-                    margin: EdgeInsets.only(left: 10.h),
-                    decoration: BoxDecoration(
-                      color: appTheme.black900,
-                      borderRadius: BorderRadius.circular(
-                        1.h,
+                      Container(
+                        height: 3.v,
+                        width: 24.h,
+                        margin: EdgeInsets.only(left: 10.h),
+                        decoration: BoxDecoration(
+                          color: appTheme.blueGray100,
+                          borderRadius: BorderRadius.circular(
+                            1.h,
+                          ),
+                        ),
                       ),
-                    ),
+                      Container(
+                        height: 3.v,
+                        width: 24.h,
+                        margin: EdgeInsets.only(left: 10.h),
+                        decoration: BoxDecoration(
+                          color: appTheme.black900,
+                          borderRadius: BorderRadius.circular(
+                            1.h,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
+                  SizedBox(height: 5.v),
                 ],
               ),
-              SizedBox(height: 5.v),
-            ],
-          ),
-        ),
+            ),
         bottomNavigationBar: _buildGetStartedButton(context),
       ),
     );

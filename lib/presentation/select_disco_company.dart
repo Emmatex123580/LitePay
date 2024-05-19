@@ -67,8 +67,8 @@ class _SelectDiscoCompanyState extends State<SelectDiscoCompany> {
                     return Container(
                       height: 43.7.v,
                       width:320.h,
-                      padding: EdgeInsets.all(8.0),
-                      margin: EdgeInsets.only(bottom: 4.v, top: 4.v),
+                      //padding: EdgeInsets.all(8.0),
+                      margin: EdgeInsets.only(bottom: 8.v, top: 8.v),
                       child: OutlinedButton(
                         onPressed: () {},
                         child: Row(

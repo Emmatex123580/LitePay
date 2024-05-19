@@ -35,16 +35,6 @@ class WelcomeScreen extends StatelessWidget {
                           alignment: Alignment.topCenter,
                           children: [
                             CustomImageView(
-                              imagePath: ImageConstant.imgUnsplashYmchvhbqzw,
-                              height: 262.adaptSize,
-                              width: 262.adaptSize,
-                              alignment: Alignment.topLeft,
-                              margin: EdgeInsets.only(
-                                left: 33.h,
-                                top: 54.v,
-                              ),
-                            ),
-                            CustomImageView(
                               imagePath: ImageConstant.imgRectangle127,
                               height: 325.v,
                               width: 326.h,
@@ -54,9 +44,9 @@ class WelcomeScreen extends StatelessWidget {
                               alignment: Alignment.topCenter,
                               margin: EdgeInsets.only(top: 1.v),
                             ),
+                            
                             CustomImageView(
-                              imagePath:
-                                  ImageConstant.imgUnsplashYmchvhbqzw327x346,
+                              imagePath:ImageConstant.imgUnsplashYmchvhbqzw327x346,
                               height: 327.v,
                               width: 346.h,
                               radius: BorderRadius.circular(
@@ -64,6 +54,7 @@ class WelcomeScreen extends StatelessWidget {
                               ),
                               alignment: Alignment.topLeft,
                             ),
+                            
                             CustomImageView(
                               imagePath: ImageConstant.imgRectangle128,
                               height: 107.v,

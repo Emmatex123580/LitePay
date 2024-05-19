@@ -1,18 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:litepay/presentation/Electricity.dart';
 import 'package:litepay/presentation/airtime.dart';
-import 'package:litepay/presentation/airtime_funding.dart';
 import 'package:litepay/presentation/buy_data_bundle.dart';
 import 'package:litepay/presentation/cable_pay.dart';
-import 'package:litepay/presentation/fund_wallet_atm_monnify.dart';
-import 'package:litepay/presentation/fund_wallet_atm_paystack.dart';
-import 'package:litepay/presentation/fund_wallet_automated_bank.dart';
-import 'package:litepay/presentation/manual_bank.dart';
+import 'package:litepay/presentation/sign_in_screen.dart';
 import 'package:litepay/presentation/transaction_history.dart';
 import 'package:litepay/presentation/wallet_history.dart';
-import 'package:litepay/widgets/custom_outlined_button.dart';
-import 'package:litepay/widgets/side_drawer.dart';
+import 'package:litepay/widgets/add_money_bottomSheet.dart';
 import '../core/app_export.dart';
 import '../widgets/custom_icon_button.dart';
 
@@ -28,6 +25,33 @@ class HomeScreenPage extends StatefulWidget {
 }
 
 class _HomeScreenPageState extends State<HomeScreenPage> {
+
+  String retrievedValue = '';
+  User? currentUser = FirebaseAuth.instance.currentUser;
+  //This function gets the fullname of client
+  Future<void> retrieveData() async {
+    try {
+      DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(currentUser!.uid)
+          .get();
+
+      setState(() {
+        retrievedValue = documentSnapshot.get('fullname');
+      });
+    } catch (e) {
+      setState(() {
+        retrievedValue = '';
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    retrieveData(); 
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -213,6 +237,318 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
     );
   }
   
+  //Side drawer at the Home Page
+  Widget BuildDrawer(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    return Container(
+      width: screenWidth * 0.85, 
+      decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.only(
+        topRight: Radius.circular(20.0),
+        bottomRight: Radius.circular(20.0),
+        ),
+      ),
+      child: Drawer(
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.horizontal(right: Radius.circular(15))),
+        child: ListView(
+        padding: EdgeInsets.only(left: 24.0),
+        children: <Widget>[
+          SizedBox(height: 27.0,),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: ()=>Navigator.pop(context)
+              )]
+              ),
+              SizedBox(height: screenHeight * 0.03),
+              Row(
+                children: [
+                  SizedBox(
+                    child: Stack(
+                      fit: StackFit.loose,
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: AssetImage('assets/images/img_ellipse_116.png'),
+                          radius: 32,
+                        ),
+                        Positioned(
+                          right: -0,
+                          bottom: 0,
+                          child: Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color:  Color(0XFF9B03D0),
+                            ),
+                            child: IconButton(
+                              padding: EdgeInsets.zero,
+                              color:  Color(0XFF9B03D0),
+                              icon: Icon(
+                                Icons.camera_alt_outlined,
+                                size: 15,
+                                color: Colors.grey,
+                              ),
+                              onPressed: () {
+                                // TODO: Implement an action
+                              },
+                            ),
+                          ),
+                        ),
+                      ]
+                    ),
+                    ),
+                      
+                    SizedBox(width: screenWidth * 0.02),
+                    Column(
+                      children: [
+                        Text(
+                          "$retrievedValue",
+                          style: theme.textTheme.titleSmall,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          "Wallet ID: 68JDGH90",
+                          style: TextStyle(fontSize: 15)
+                        ),
+
+                      ],
+                    )
+                  ]),
+                  SizedBox(height: screenHeight * 0.06),
+                  InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/images/img_nav_pricing.svg",
+                          width: 30,
+                          height: 30,
+                          color: Color(0XFF9B03D0),
+                        ),
+                        SizedBox(width: screenWidth * 0.1),
+                        Text(
+                          "Pricing",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: "Poppins",
+                            color: Color(0XFF9B03D0),
+                            fontWeight: FontWeight.w400
+                          )
+                        )
+                      ]
+                    )
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.person_outlined,
+                          size: 30,
+                          color: Color(0XFF9B03D0),
+                          weight: 0.0008,
+                        ),
+                        SizedBox(width: screenWidth * 0.1),
+                        Text(
+                          "Profile",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: "Poppins",
+                            color: Color(0XFF9B03D0),
+                            fontWeight: FontWeight.w400
+                          )
+                        )
+                      ]
+                    )
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/images/img_profile.svg",
+                          width: 30,
+                          height: 30,
+                          color: Color(0XFF9B03D0),
+                        ),
+                        SizedBox(width: screenWidth * 0.1),
+                        Text(
+                          "About LitePay",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: "Poppins",
+                            color: Color(0XFF9B03D0),
+                            fontWeight: FontWeight.w400
+                          )
+                        )
+                      ]
+                    )
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/images/img_material_symbol_primary.svg",
+                          width: 30,
+                          height: 30,
+                          color: Color(0XFF9B03D0),
+                        ),
+                        SizedBox(width: screenWidth * 0.1),
+                        Text(
+                          "Contact Us",
+                            style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: "Poppins",
+                            color: Color(0XFF9B03D0),
+                            fontWeight: FontWeight.w400
+                          )
+                        )
+                      ]
+                    )
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.forum_outlined,
+                          size: 30,
+                          color:  Color(0XFF9B03D0)
+                        ),
+                        SizedBox(width: screenWidth * 0.1),
+                        Text(
+                          "Lodge a Complaint",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: "Poppins",
+                            color: Color(0XFF9B03D0),
+                            fontWeight: FontWeight.w400
+                          )
+                        )
+                      ]
+                    )
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/images/img_nav_referrals.svg",
+                          width: 30,
+                          height: 30,
+                          color: Color(0XFF9B03D0),
+                        ),
+                        SizedBox(width: screenWidth * 0.1),
+                        Text(
+                          "Referals",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: "Poppins",
+                            color: Color(0XFF9B03D0),
+                            fontWeight: FontWeight.w400
+                          )
+                        )
+                      ]
+                    )
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/images/img_streamline_web.svg",
+                          width: 30,
+                          height: 30,
+                          color: Color(0XFF9B03D0),
+                        ),
+                        SizedBox(width: screenWidth * 0.1),
+                        Text(
+                          "Visit a Website",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: "Poppins",
+                            color: Color(0XFF9B03D0),
+                            fontWeight: FontWeight.w400
+                          ) 
+                        )
+                      ]
+                    )
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                          SvgPicture.asset(
+                          "assets/images/img_settings.svg",
+                          width: 30,
+                          height: 30,
+                          color: Color(0XFF9B03D0),
+                        ),
+                        SizedBox(width: screenWidth * 0.1),
+                        Text(
+                          "Airtime Funding",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: "Poppins",
+                            color: Color(0XFF9B03D0),
+                            fontWeight: FontWeight.w400
+                          )
+                        ),
+                        
+                      ]
+                    )
+                  ),
+                  SizedBox(height: screenHeight * 0.1),
+                  InkWell(
+                    onTap: () async{
+                      await FirebaseAuth.instance.signOut();
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignInScreen()),
+                        (route) => false,
+                      );
+
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.logout_outlined,
+                          size: 30,
+                          color: Colors.red,
+                        ),
+                        SizedBox(width: screenWidth * 0.02),
+                        Text(
+                          "Log Out",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.red,
+                            fontFamily: "Poppins", 
+                            fontWeight: FontWeight.w400                             )
+                        )
+                      ]
+                    ),
+                  )
+                ]
+                ),
+              )
+      );
+                
+    }
+
   // Section Widget
   Widget _buildTransactionRow(BuildContext context) {
     return Container(
@@ -256,7 +592,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        _addMoneyBottomSheet(context);
+                        addMoneyBottomSheet(context);
                       },
                       icon: Container(
                         height: 16.adaptSize,
@@ -663,114 +999,7 @@ Widget _buildPropertyColumn(
     );
   }
 
-// This function returns the addMoney bottom sheet in the home screen
-void _addMoneyBottomSheet(BuildContext context) {
-  showModalBottomSheet(
-    backgroundColor: Colors.white,
-    context: context,
-    isDismissible: true,
-    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
-    builder: (BuildContext context) {
-      return SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.only(left: 20, right: 20),
-          height: 400.v,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Select Payment method",
-                    style: CustomTextStyles.titleMediumOnPrimaryContainer,
-                  ),
-                  IconButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    icon: Container(
-                      child: Icon(
-                        Icons.close,
-                        color: Color(0XFFF90808),
-                      ),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Color(0XFFF90808),
-                          width: 1.0,
-                        )
-                      )
-                    ),
-                  ),
-                ],
-              ),
-              CustomOutlinedButton( 
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => FundWalletAtmMonnify()),
-                  );
-                },
-                height: 41.v,
-                text: "Fund wallet ATM Monnify",
-                buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
-                buttonTextStyle: theme.textTheme.bodyLarge!,
-              ),
-              CustomOutlinedButton(
-                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => FundWalletAtmPaystack()),
-                  );
-                },
-                height: 41.v,
-                text: "Fund wallet ATM Paystack",
-                buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
-                buttonTextStyle: theme.textTheme.bodyLarge!,
-              ),
-              CustomOutlinedButton(
-                onPressed:() {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ManualBankPayment()),
-                  );
-                },
-                height: 41.v,
-                text: "Fund wallet Manual Bank",
-                buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
-                buttonTextStyle: theme.textTheme.bodyLarge!,
-              ),
-              CustomOutlinedButton(
-                onPressed:() {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => FundWalletAutomatedBank()),
-                  );
-                },
-                height: 41.v,
-                text: "Fund wallet Automated bank",
-                buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
-                buttonTextStyle: theme.textTheme.bodyLarge!,
-              ),
-              CustomOutlinedButton(
-                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AirtimeFunding()),
-                  );
-                },
-                height: 41.v,
-                text: "Airtime Funding",
-                buttonStyle: CustomButtonStyles.outlinePrimaryTL5,
-                buttonTextStyle: theme.textTheme.bodyLarge!,
-              ),
-      
-            ],
-          ),
-        ),
-      );
-    },
-  );
-}
+
 
 
  

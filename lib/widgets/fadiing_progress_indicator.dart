@@ -8,15 +8,12 @@ void fadingCircularProgressIndicator(BuildContext context) {
   showDialog(
     context: context,
     barrierDismissible: false,
-    builder: (BuildContext context) {
-      return Dialog(
-        backgroundColor: Colors.transparent,
-        child:  SpinKitFadingCircle(
-          color:  Color(0XFF9B03D0),
-          size: 50.0.adaptSize,
-          duration: Duration(seconds: 5)
-        ),
-      );
-    },
+    builder: (context) => Center(
+      child:  SpinKitFadingCircle(
+        color:  Color(0XFF9B03D0),
+        size: 50.0.adaptSize,
+        duration: Duration(seconds: 5)
+      ),
+    )
   );
 }

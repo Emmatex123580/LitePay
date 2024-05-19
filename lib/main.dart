@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:litepay/firebase_options.dart';
+import 'package:litepay/presentation/Electricity.dart';
 import 'package:litepay/presentation/cable_pay.dart';
 import 'package:litepay/presentation/home_screen_page.dart';
 import 'package:litepay/presentation/notification_one_screen.dart';
+import 'package:litepay/presentation/sign_in_screen.dart';
+import 'package:litepay/presentation/sign_up_one_screen.dart';
+import 'package:litepay/presentation/sign_up_screen.dart';
 import 'core/app_export.dart';
 import 'core/size_utils.dart';
 import 'routes/app_routes.dart';
 import 'theme/theme_helper.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() async{
+  await WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
@@ -29,9 +38,9 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'litepay',
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.splashScreen,   //It was AppRoutes.signInScreen or AppRoutes.splashScreen
+          //initialRoute: AppRoutes.splashScreen,   //It was AppRoutes.signInScreen or AppRoutes.splashScreen
           routes: AppRoutes.routes,
-          home: HomePage() 
+          home: SignInScreen()//HomePage() 
         );
       }
     );

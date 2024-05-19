@@ -16,7 +16,12 @@ class ActivationCodeScreen extends StatefulWidget {
 
 class _ActivationCodeScreenState extends State<ActivationCodeScreen> {
   String Code = "1234";
-  String code = "1234";
+  TextEditingController _pincodeController = TextEditingController();
+
+  void dispose() {
+    _pincodeController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -77,11 +82,10 @@ class _ActivationCodeScreenState extends State<ActivationCodeScreen> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () {
-                         Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SetCodeScreen())
-                        );
+                      onPressed: () async{
+                        
+                       
+                         
                       }, //TODO: Implement an action
                       child: Container(
                         padding: EdgeInsets.only(bottom: 10, top: 10, right: 20, left: 20),
@@ -106,30 +110,25 @@ class _ActivationCodeScreenState extends State<ActivationCodeScreen> {
 
   
 
-  //Code display
+  //Pin Code display
   Widget get pinCodeTextFieldWidget => PinCodeTextField(
-      appContext: context,
-      //controller: _codeController,
-      length: 4,
-      autoFocus: true,
-      keyboardType: TextInputType.number,
-      inputFormatters: [
-        FilteringTextInputFormatter.digitsOnly,
-      ],
-      pinTheme: PinTheme(
-        fieldHeight: 46.h,
-        fieldWidth: 46.h,
-        shape: PinCodeFieldShape.box,
-        inactiveColor: appTheme.purpleA100,
-        activeColor: appTheme.purpleA100,
-      ),
-      onCompleted: (value) {
-        //Implement an action
-       setState(() {
-         code = value.replaceAll(" ", "");
-       });
-      },
-    );
+    appContext: context,
+    controller: _pincodeController,
+    length: 4,
+    autoFocus: true,
+    keyboardType: TextInputType.number,
+    inputFormatters: [
+      FilteringTextInputFormatter.digitsOnly,
+    ],
+    pinTheme: PinTheme(
+      fieldHeight: 46.h,
+      fieldWidth: 46.h,
+      shape: PinCodeFieldShape.box,
+      inactiveColor: appTheme.purpleA100,
+      activeColor: appTheme.purpleA100,
+    ),
+
+  );
 }
 
 

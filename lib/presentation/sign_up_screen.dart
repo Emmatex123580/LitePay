@@ -1,9 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:litepay/presentation/sign_in_screen.dart';
-import 'package:litepay/presentation/sign_up_one_screen.dart';
+import 'package:litepay/widgets/fadiing_progress_indicator.dart';
+import 'package:litepay/widgets/signup_success_bottomsheet.dart';
 import '../core/app_export.dart';
 import '../widgets/custom_elevated_button.dart';
+import "../auth/fire_base_auth/firebase_auth_services.dart";
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key})
@@ -17,169 +20,145 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formkey = GlobalKey<FormState>();
-  String fullName = "";
-  String username = "";
-  String email = "";
-  String address = "";
-  String password = "";
-  late int telephone;
-   bool _isPasswordVisible = true;
+
+
+   bool _SigningUp = false;
+  final FirebaseAuthService _auth = FirebaseAuthService(); //assigning the FirebaseAuthService
+  TextEditingController _fullnameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _phoneNumberController = TextEditingController();
+  TextEditingController _addressController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _usernameController = TextEditingController();
+  bool _isPasswordVisible = true;
+   
+  @override
+  void dispose() {
+     _usernameController.dispose(); 
+    _fullnameController.dispose();
+    _emailController.dispose();
+    _phoneNumberController.dispose();
+    _addressController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: Form(
+        child: Scaffold(
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
+        child: Form(
           key: _formkey,
-          child: SizedBox(
-            width: double.maxFinite,
-            child: Column(
-              children: [
-                _buildEight(context),
-                SizedBox(height: 10.v),
-                SizedBox(
-                  height: 632.v,
-                  width: double.maxFinite,
-                  child: Stack(
-                    alignment: Alignment.topCenter,
-                    children: [
-                      CustomImageView(
-                        imagePath: ImageConstant.imgVector20,
-                        height: 155.v,
-                        width: 360.h,
-                        alignment: Alignment.bottomCenter,
-                      ),
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10.h),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  "Sign Up",
-                                  style: theme.textTheme.titleLarge,
-                                ),
+          child: Column(
+            children: [
+              _buildEight(context),
+              SizedBox(height: 10.v),
+              SizedBox(
+                width: double.maxFinite,
+                child: Stack(
+                  alignment: Alignment.topCenter,
+                  children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10.h),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "Sign Up",
+                                style: theme.textTheme.titleLarge,
                               ),
-                              SizedBox(height: 28.v),
-                              
-                             SizedBox(height: 8.0),
-                              _buildUserName(),
-                              const SizedBox(height: 8.0),
-                              _buildEmail(),
-                              const SizedBox(height: 8.0),
-                              _buildTelephone(),
-                              const SizedBox(height: 8.0),
-                              _buildAddress(),
-                              const SizedBox(height: 8.0),
-                              _buildPassword(),
-                              const SizedBox(height:8.0),
-
-                              CustomElevatedButton(
-                                text: "Get Started",
-                                margin: EdgeInsets.symmetric(horizontal: 21.h),
-                                onPressed: () {
-                                  final isValid = _formkey.currentState!.validate();
-                                  if(isValid) {
-                                    _formkey.currentState!.save();
-                                      showModalBottomSheet(
-                                        context: context,
-                                        isDismissible: false,
-                                        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
-                                        builder: (BuildContext context) {
-                                          return Container(
-                                            height: 250,
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
-                                            ),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.check,
-                                                  size: 100,
-                                                  color: Color.fromARGB(255, 37, 229, 44),
-                                                  ),
-                                                Text(
-                                                  "Success",
-                                                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                                                  ),
-                                                Center(
-                                                  child: Text(
-                                                    "Your registration  was successful, please login now.", 
-                                                    style:  TextStyle(fontSize: 18, fontFamily: "Poppins",)
-                                                  )
-                                                ),
-                                                Container(
-                                                  height: 20.v,
-                                                  width: 100.h,
-                                                  child: ElevatedButton(
-                                                    child: Text(
-                                                      "Ok",
-                                                      style: TextStyle(fontWeight: FontWeight.bold)
-                                                    ),
-                                                    onPressed: () {
-                                                      Navigator.push(context,
-                                                        MaterialPageRoute(builder: (context) => SignUpOneScreen()));
-                                                    },
-                                                    style: ElevatedButton.styleFrom(
-                                                      backgroundColor:  Color.fromARGB(255, 29, 243, 36), // Background color of the button
-                                                      foregroundColor: Colors.white, // Text color
-                                                      shape: RoundedRectangleBorder(
-                                                        borderRadius: BorderRadius.circular(8.0), // Button border radius
-                                                      )
-                                                    ),
-                                                
-                                                  ),
-                                                )
-                                              ]
-                                            ),
-                                          );
-                                        }
-                                      );
+                            ),
+                            SizedBox(height: 28.v),
+                            _buildName(),
+                            SizedBox(height: 8.v),
+                            _buildUserName(),
+                            SizedBox(height: 8.v),
+                            _buildEmail(),
+                            SizedBox(height: 8.v),
+                            _buildTelephone(),
+                            SizedBox(height: 8.v),
+                            _buildAddress(),
+                            SizedBox(height: 8.v),
+                            _buildPassword(),
+                            SizedBox(height: 16.v),
+                            CustomElevatedButton(
+                              text: "Get Started",
+                              margin: EdgeInsets.symmetric(horizontal: 21.h),
+                              onPressed: () async {
+                                final isValid = _formkey.currentState!.validate();    
+                                if (isValid)  {
+                                  fadingCircularProgressIndicator(context);
+                                  try{
+                                    bool _isSignedUp;
+                                    _isSignedUp = await _auth.signUp(context, _emailController.text, _passwordController.text, _addressController.text,
+                                   _fullnameController.text, _phoneNumberController.text, _usernameController.text);
+                                   if (_isSignedUp == true) {
+                                     Navigator.pop(context);
+                                     signUpSuccess(context);
+                                   }
+                                  } catch(e) {
+                                    Navigator.pop(context);
                                   }
-                                },
-                              ),
-                                   
-                              SizedBox(height: 45.v),
-                              RichText(
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: "Already have an account? ",
-                                      style: CustomTextStyles.bodySmallff2f2f2f,
-                                    ),
-                                    TextSpan(
-                                      text: "Sign In",
-                                      style: CustomTextStyles.bodySmallff9b03d0,
-                                      recognizer: TapGestureRecognizer()..onTap = (){
+                                  
+                                }
+                              },
+                            ),
+                            SizedBox(height: 35.v),
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: "Already have an account? ",
+                                    style: CustomTextStyles.bodySmallff2f2f2f,
+                                  ),
+                                  TextSpan(
+                                    text: "Sign In",
+                                    style: CustomTextStyles.bodySmallff9b03d0,
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder:  ((context) => SignInScreen()))
-                                        );
+                                          MaterialPageRoute(
+                                              builder: ((context) => SignInScreen())
+                                            )
+                                          )
+                                                  ;
                                       }
                                     ),
-                                  ],
-                                ),
-                                textAlign: TextAlign.left,
+                                ],
                               ),
-                            ],
-                          ),
+                              textAlign: TextAlign.left,
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),  
+              _bottomImage(context)
+              
+              /**
+              CustomImageView(
+                imagePath: ImageConstant.imgVector20,
+                height: 155.v,
+                width: 360.h,
+              ),
+              */
+            ],
           ),
         ),
       ),
-    );
+    ));
   }
+
+ 
 
   /// Section Widget
   Widget _buildEight(BuildContext context) {
@@ -210,66 +189,126 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Navigator.pop(context);
             },
           ),
-        ],
+        ]
+        )
+    );
+  }
+
+  Widget _bottomImage(BuildContext context) {
+    return Container(
+      width: double.maxFinite,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            ImageConstant.imgVector20,
+          ),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
 
-
+  //Full Name form field
   Widget _buildName() => TextFormField(
+    controller: _fullnameController,
+    validator: (value) {
+      if (value!.isEmpty) {
+        return "Enter full name";
+      }
+      return null;
+    },
     decoration: InputDecoration(
       labelText: "Full Name",
       border: OutlineInputBorder(),
     ),
     keyboardType: TextInputType.name,
-    onSaved: (value) => setState(() => fullName = value!),
   );
 
-   Widget _buildUserName() => TextFormField(
+  // User Name form field
+  Widget _buildUserName() => TextFormField(
+    controller: _usernameController,
+    validator: (value) {
+      if (value!.isEmpty) {
+        return "Enter user name";
+      }
+      return null;
+    },
     decoration: InputDecoration(
       labelText: "User Name",
       border: OutlineInputBorder(),
     ),
     keyboardType: TextInputType.name,
-    onSaved: (value) => setState(() => fullName = value!),
-   );
+  );
 
-   Widget _buildEmail() => TextFormField(
-    decoration: InputDecoration(
-      labelText: "Email",
-      border: OutlineInputBorder(),
-    ),
-    keyboardType: TextInputType.emailAddress,
-    onSaved: (value) => setState(() => email = value!),
-   );
+  // Email form field
+  Widget _buildEmail() => TextFormField(
+      controller: _emailController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "Enter email";
+        } else if (!RegExp(
+                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            .hasMatch(value)) {
+          return "Enter a valid email address";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "Email",
+        border: OutlineInputBorder(),
+      ),
+      keyboardType: TextInputType.emailAddress,
+    );
 
-   Widget _buildAddress() => TextFormField(
+  //Home Address Form field
+  Widget _buildAddress() => TextFormField(
+    controller: _addressController,
+    validator: (value) {
+      if (value!.isEmpty) {
+        return "Enter Address";
+      }
+      return null;
+    },
     decoration: InputDecoration(
       labelText: "Home Address",
       border: OutlineInputBorder(),
     ),
     keyboardType: TextInputType.streetAddress,
-    onSaved: (value) => setState(() => address = value!),
-   );
+  );
 
-   Widget _buildTelephone() => TextFormField(
+  // Phone No. form field
+  Widget _buildTelephone() => TextFormField(
+    controller: _phoneNumberController,
+    validator: (value) {
+      if (value!.isEmpty) {
+        return "Enter Phone No.";
+      } else if (value.length != 11) {
+        return "Enter 11 digits";
+      }
+      return null;
+    },
+    inputFormatters: <TextInputFormatter>[
+      FilteringTextInputFormatter.digitsOnly,
+    ],
     decoration: InputDecoration(
       labelText: "Phone No.",
       border: OutlineInputBorder(),
     ),
     keyboardType: TextInputType.number,
-    onSaved: (value) => setState(() => fullName = value!),
-    validator: (value) {
-      if(value!.length != 11) {
-        return "Incorrect phone No";
-      }
-      else{
-        return null;
-      }
-    }
-   );
+  );
 
-   Widget _buildPassword() => TextFormField(
+  //Password form field
+  Widget _buildPassword() => TextFormField(
+    controller: _passwordController,
+    validator: (value) {
+      if (value!.isEmpty) {
+        return "Enter Password";
+      }
+      else if (value.length < 6) {
+        return "Password is less than 6 characters";
+      }
+      return null;
+    },
     decoration: InputDecoration(
       labelText: "Password",
       border: OutlineInputBorder(),
@@ -285,6 +324,5 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     ),
     obscureText: _isPasswordVisible,
-    onChanged: (value) => setState(() => password = value),
-   );
+  );
 }
