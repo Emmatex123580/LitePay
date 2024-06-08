@@ -94,10 +94,12 @@ class FirebaseAuthService {
           // 'password': password.trim(),
           // add other user details here
         });
+          Navigator.pop(context);
           signUpSuccess(context);
         return true;
       }
     } catch (e) {
+      Navigator.pop(context);
       if (e is FirebaseAuthException) {
         if (e.code == "email-already-in-use") {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(

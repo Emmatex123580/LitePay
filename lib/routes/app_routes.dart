@@ -14,9 +14,7 @@ import '../presentation/sign_in_eight_screen.dart';
 //import '../presentation/android_large_eleven_screen.dart';
 import '../presentation/sign_up_screen.dart';
 import '../presentation/sign_up_one_screen.dart';
-import '../presentation/home_screen_one_screen.dart';
 import '../presentation/notification_one_screen.dart';
-import '../presentation/notification_screen.dart';
 //import '../presentation/wallet_summary_screen.dart';
 import '../presentation/transfer_screen.dart';
 import '../presentation/airtime_screen.dart';
@@ -34,7 +32,6 @@ import '../presentation/education_pin_four_screen.dart';
 import '../presentation/education_pin_three_screen.dart';
 //import '../presentation/education_pin_one_screen.dart';
 import '../presentation/education_pin_six_screen.dart';
-import '../presentation/home_screen_three_screen.dart';
 import '../presentation/upgrade_two_screen.dart';
 import '../presentation/upgrade_three_screen.dart';
 import '../presentation/withdraw_bonus_seven_screen.dart';
@@ -208,9 +205,7 @@ class AppRoutes {
     //androidLargeElevenScreen: (context) => AndroidLargeElevenScreen(),
     signUpScreen: (context) => SignUpScreen(),
     signUpOneScreen: (context) => SignUpOneScreen(),
-    homeScreenOneScreen: (context) => HomeScreenOneScreen(),
     notificationOneScreen: (context) => NotificationOneScreen(),
-    notificationScreen: (context) => NotificationScreen(),
     //walletSummaryScreen: (context) => WalletSummaryScreen(),
     transferScreen: (context) => TransferScreen(),
     airtimeScreen: (context) => AirtimeScreen(),
@@ -228,7 +223,6 @@ class AppRoutes {
     educationPinThreeScreen: (context) => EducationPinThreeScreen(),
     //educationPinOneScreen: (context) => EducationPinOneScreen(),
     educationPinSixScreen: (context) => EducationPinSixScreen(),
-    homeScreenThreeScreen: (context) => HomeScreenThreeScreen(),
     upgradeTwoScreen: (context) => UpgradeTwoScreen(),
     upgradeThreeScreen: (context) => UpgradeThreeScreen(),
     withdrawBonusSevenScreen: (context) => WithdrawBonusSevenScreen(),

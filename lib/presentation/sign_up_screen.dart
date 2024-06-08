@@ -93,18 +93,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               onPressed: () async {
                                 final isValid = _formkey.currentState!.validate();    
                                 if (isValid)  {
-                                  fadingCircularProgressIndicator(context);
                                   try{
-                                    bool _isSignedUp;
-                                    _isSignedUp = await _auth.signUp(context, _emailController.text, _passwordController.text, _addressController.text,
+                                    fadingCircularProgressIndicator(context);
+                                    await _auth.signUp(context, _emailController.text, _passwordController.text, _addressController.text,
                                    _fullnameController.text, _phoneNumberController.text, _usernameController.text);
-                                   if (_isSignedUp == true) {
-                                     Navigator.pop(context);
-                                     signUpSuccess(context);
-                                   }
+                                  
                                   } catch(e) {
                                     Navigator.pop(context);
                                   }
+                              
                                   
                                 }
                               },

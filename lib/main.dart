@@ -9,10 +9,8 @@ import 'package:litepay/presentation/notification_one_screen.dart';
 import 'package:litepay/presentation/sign_in_screen.dart';
 import 'package:litepay/presentation/sign_up_one_screen.dart';
 import 'package:litepay/presentation/sign_up_screen.dart';
+import 'package:litepay/presentation/transaction_history.dart';
 import 'core/app_export.dart';
-import 'core/size_utils.dart';
-import 'routes/app_routes.dart';
-import 'theme/theme_helper.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
@@ -38,9 +36,8 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'litepay',
           debugShowCheckedModeBanner: false,
-          //initialRoute: AppRoutes.splashScreen,   //It was AppRoutes.signInScreen or AppRoutes.splashScreen
+          initialRoute: AppRoutes.splashScreen,   //It was AppRoutes.signInScreen or AppRoutes.splashScreen
           routes: AppRoutes.routes,
-          home: SignInScreen()//HomePage() 
         );
       }
     );

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:litepay/core/copy_function.dart';
 import 'package:litepay/theme/theme_helper.dart';
 import 'package:litepay/widgets/custom_elevated_button.dart';
@@ -19,12 +20,19 @@ class TransactionDetails extends StatefulWidget {
 class _TransactionDetailsState extends State<TransactionDetails> {
   late pw.Widget _pdfWidget;
 
+ 
   @override
   void initState() {
     super.initState();
-    _pdfWidget = _detailBodyToPdfWidget();
+    _loadPdfWidget();
   }
 
+  Future<void> _loadPdfWidget() async {
+    final pdfWidget = await _detailBodyToPdfWidget();
+    setState(() {
+      _pdfWidget = pdfWidget;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -145,8 +153,11 @@ class _TransactionDetailsState extends State<TransactionDetails> {
       ),
     );
   }
+ 
+  Future<pw.Widget> _detailBodyToPdfWidget() async {
+    final imageBytes = await rootBundle.load("assets/images/img_image19.png");
+    final image = pw.MemoryImage(imageBytes.buffer.asUint8List());
 
-  pw.Widget _detailBodyToPdfWidget() {
     return pw.Column(
       crossAxisAlignment: pw.CrossAxisAlignment.start,
       children: [
@@ -155,11 +166,7 @@ class _TransactionDetailsState extends State<TransactionDetails> {
             shape: pw.BoxShape.circle,
             border: pw.Border.all(color: PdfColors.black, width: 1.0),
           ),
-          child: pw.Image(
-            pw.MemoryImage(File("assets/images/img_image19.png").readAsBytesSync()),
-            width: 100,
-            height: 100,
-          ),
+          child: pw.Image(image, width: 100, height: 100),
         ),
         pw.SizedBox(height: 5),
         pw.Text(
@@ -181,7 +188,7 @@ class _TransactionDetailsState extends State<TransactionDetails> {
           mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
           children: [
             pw.Text("Recipient Mobile", style: pw.TextStyle(fontSize: 12)),
-            pw.Text("08059941818", style: pw.TextStyle(fontSize: 12))
+            pw.Text("08059941818", style: pw.TextStyle(fontSize: 12)),
           ],
         ),
         pw.SizedBox(height: 24),
@@ -189,7 +196,7 @@ class _TransactionDetailsState extends State<TransactionDetails> {
           mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
           children: [
             pw.Text("Transaction Type", style: pw.TextStyle(fontSize: 12)),
-            pw.Text("Airtime", style: pw.TextStyle(fontSize: 12))
+            pw.Text("Airtime", style: pw.TextStyle(fontSize: 12)),
           ],
         ),
         pw.SizedBox(height: 24),
@@ -197,7 +204,7 @@ class _TransactionDetailsState extends State<TransactionDetails> {
           mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
           children: [
             pw.Text("Payment Method", style: pw.TextStyle(fontSize: 12)),
-            pw.Text("Balance", style: pw.TextStyle(fontSize: 12))
+            pw.Text("Balance", style: pw.TextStyle(fontSize: 12)),
           ],
         ),
         pw.SizedBox(height: 24),
@@ -208,9 +215,9 @@ class _TransactionDetailsState extends State<TransactionDetails> {
             pw.Row(
               children: [
                 pw.Text("856709851267431876", style: pw.TextStyle(fontSize: 12)),
-                pw.Icon(pw.IconData(0xe14d), size: 12, color: PdfColors.purple)
+                pw.Icon(pw.IconData(0xe14d), size: 12, color: PdfColors.purple),
               ],
-            )
+            ),
           ],
         ),
         pw.SizedBox(height: 24),
@@ -218,7 +225,7 @@ class _TransactionDetailsState extends State<TransactionDetails> {
           mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
           children: [
             pw.Text("Transaction Date", style: pw.TextStyle(fontSize: 12)),
-            pw.Text("12th jan, 2024", style: pw.TextStyle(fontSize: 12))
+            pw.Text("12th jan, 2024", style: pw.TextStyle(fontSize: 12)),
           ],
         ),
         pw.SizedBox(height: 24),
@@ -226,18 +233,18 @@ class _TransactionDetailsState extends State<TransactionDetails> {
           mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
           children: [
             pw.Text("Transaction Time", style: pw.TextStyle(fontSize: 12)),
-            pw.Text("12:20:33", style: pw.TextStyle(fontSize: 12))
+            pw.Text("12:20:33", style: pw.TextStyle(fontSize: 12)),
           ],
         ),
       ],
     );
-  }
+    }
 
-
+  ///**
   Future<File> generatePDF() async {
     final pdf = pw.Document();
 
-    // Add content to the PDF
+    //Add content to the PDF
     pdf.addPage(
       pw.Page(
         build: (pw.Context context) {
@@ -246,11 +253,11 @@ class _TransactionDetailsState extends State<TransactionDetails> {
       ), // addPage
     );
 
-    // Get the temporary directory path
+    //Get the temporary directory path
     final tempDir = await getTemporaryDirectory();
     final path = tempDir.path;
 
-    // Save the PDF
+    //Save the PDF
     final File file = File('$path/example.pdf');
     await file.writeAsBytes(await pdf.save());
 
@@ -258,7 +265,9 @@ class _TransactionDetailsState extends State<TransactionDetails> {
   }
 
   Future<void> _sharePDF() async {
-    File file = await generatePDF();
-    Share.share("${file.path}");
+    final file = await generatePDF();
+    await Share.share("${file.path}");
   }
+  //*/
 }
+

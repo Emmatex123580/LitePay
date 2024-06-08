@@ -90,7 +90,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
               icon: Icon(Icons.email, size: 32.adaptSize),
               label: Text(
                 "Resend email",
-                style: TextStyle(fontSize: 24.adaptSize)
+                style: TextStyle(fontSize: 24.adaptSize, color: Colors.white)
               ),
               onPressed: canResendEmail ? sendVerificationEmail : null
             ),

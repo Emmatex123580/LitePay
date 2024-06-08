@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:litepay/auth/fire_base_auth/firebase_auth_services.dart';
 import 'package:litepay/core/main_page.dart';
+import 'package:litepay/presentation/home_screen_page.dart';
 import 'package:litepay/presentation/sign_in_three_screen.dart';
 import 'package:litepay/presentation/sign_up_screen.dart';
 import 'package:litepay/widgets/fadiing_progress_indicator.dart';
@@ -21,61 +22,64 @@ class SignInScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        body: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CustomImageView(
-              imagePath: ImageConstant.imgVector19,
-              height: 112.v,
-              width: 360.h,
-            ),
-            SizedBox(height: 70.v),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.only(left: 19.h),
-                child: Text(
-                  "Sign In",
-                  style: theme.textTheme.titleLarge,
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            width: double.maxFinite,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CustomImageView(
+                  imagePath: ImageConstant.imgVector19,
+                  height: 112.v,
+                  width: 360.h,
                 ),
-              ),
-            ),
-            SizedBox(height: 18.v),
-            LoginForm(),
-            SizedBox(height: 9.v),
-            
-            TextButton(
-              onPressed: () {
-                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SignUpScreen()));
-              },
-              child: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: "New user? ",
-                      style: CustomTextStyles.bodySmallff2f2f2f,
+                SizedBox(height: 70.v),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 19.h),
+                    child: Text(
+                      "Sign In",
+                      style: theme.textTheme.titleLarge,
                     ),
-            
-                    TextSpan(
-                      text: "Sign Up",
-                      style: CustomTextStyles.bodySmallff9b03d0,
-                    ),
-                  ],
+                  ),
                 ),
-                textAlign: TextAlign.left,
+                SizedBox(height: 18.v),
+                LoginForm(),
+                SizedBox(height: 9.v),
+                
+                TextButton(
+                  onPressed: () {
+                     Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignUpScreen()));
+                  },
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "New user? ",
+                          style: CustomTextStyles.bodySmallff2f2f2f,
+                        ),
+                
+                        TextSpan(
+                          text: "Sign Up",
+                          style: CustomTextStyles.bodySmallff9b03d0,
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                SizedBox(height: 70.v),
+                CustomImageView(
+                imagePath: ImageConstant.imgVector20,
+                height: 155.v,
+                width: 360.h,
               ),
+              ],
             ),
-            SizedBox(height: 70.v),
-            Expanded(
-              child: Container()
-            ),
-            CustomImageView(
-              imagePath: ImageConstant.imgVector20,
-              height: 155.v,
-              width: 360.h,
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -111,6 +115,7 @@ class _LoginFormState extends State<LoginForm> {
         key: _formkey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -216,7 +221,7 @@ class _LoginFormState extends State<LoginForm> {
                       if (_isEmailVerified == true) {
                         Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (context) => MainPage()),
+                          MaterialPageRoute(builder: (context) => HomePage()),
                           (route) => false,
                         );  
                       } else {

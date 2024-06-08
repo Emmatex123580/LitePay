@@ -266,6 +266,9 @@ class CustomTextStyles {
         color: Color(0XFF9B03D0),
         fontWeight: FontWeight.w700,
       );
+  static get headlineMedium12 => theme.textTheme.headlineMedium!.copyWith(
+    color: Colors.white
+  );
 }
 
 extension on TextStyle {
