@@ -39,7 +39,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
           .get();
       Map<String,dynamic> data = documentSnapshot.data() as Map<String, dynamic>;
       setState(() {
-        retrievedValue = selectCharacters(data['username'], 15);
+        retrievedValue = selectCharacters(data['username'], 12);
       });
     } catch (e) {
       setState(() {

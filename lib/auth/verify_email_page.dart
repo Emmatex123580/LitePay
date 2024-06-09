@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:litepay/core/app_export.dart';
 import 'package:litepay/main.dart';
+import 'package:litepay/presentation/sign_in_screen.dart';
 import 'package:litepay/presentation/sign_up_one_screen.dart';
 
 class VerifyEmailPage extends StatefulWidget {
@@ -105,7 +106,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                 await FirebaseAuth.instance.signOut();
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: ((context) => SignUpOneScreen()))
+                  MaterialPageRoute(builder: ((context) => SignInScreen()))
                 );
               }
             )
