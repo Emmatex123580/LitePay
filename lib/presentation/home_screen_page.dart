@@ -601,7 +601,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                 text: "Airtime",
                 icon: SvgPicture.asset(
                   "assets/images/img_airtime.svg",
-                   color: Color(0xFF9B03D0),
+                   color: Color.fromARGB(255, 242, 148, 6)
                 ),
               ),
               CustomContainer(
@@ -610,26 +610,28 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                   "assets/images/data.svg",
                   width: 6.5.adaptSize,
                   height: 6.5.adaptSize,
-                   color: Color(0xFF9B03D0),
+                   color: const Color.fromARGB(255, 13, 121, 210)
                 ),
               ),
               CustomContainer(
                 text: "Cable Sub",
+                width: 30.adaptSize,
+                height: 30.adaptSize,
                 icon:  SvgPicture.asset(
                   "assets/images/cable_sub.svg",
-                   color: Color(0xFF9B03D0),
+                   color: Color.fromARGB(255, 25, 138, 28),
                 ),
               ),
               CustomContainer(
                 text: "Mega Data",
                 icon: SvgPicture.asset(
                   "assets/images/data.svg",
-                   color: Color(0xFF9B03D0),
+                   color: Color.fromARGB(255, 169, 6, 228),
                 ),
               )
             ]
           ),
-          SizedBox(height: 28.v),
+          SizedBox(height: 23.v),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -644,7 +646,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                 text: "Educational Pin",
                 icon: SvgPicture.asset(
                   "assets/images/educational.svg",
-                   color: Color(0xFF9B03D0),
+                   color: const Color.fromARGB(255, 15, 53, 84)
                 ),
               ),
               CustomContainer(
@@ -658,7 +660,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                 text: "Join affiliate",
                 icon: SvgPicture.asset(
                   "assets/images/img_pepicons_pencil_people.svg",
-                   color: Color(0xFF9B03D0),
+                   color: Color.fromARGB(255, 240, 75, 15),
                 ),
               )
             ]

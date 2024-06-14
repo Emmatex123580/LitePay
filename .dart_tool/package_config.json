@@ -638,10 +638,10 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-06-01T22:13:48.633421Z",
+  "generated": "2024-06-14T11:57:13.701629Z",
   "generator": "pub",
-  "generatorVersion": "3.4.1",
+  "generatorVersion": "3.4.3",
   "flutterRoot": "file:///C:/src/flutter",
-  "flutterVersion": "3.22.1",
+  "flutterVersion": "3.22.2",
   "pubCache": "file:///C:/Users/BRANDON/AppData/Local/Pub/Cache"
 }

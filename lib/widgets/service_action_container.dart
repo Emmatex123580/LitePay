@@ -6,7 +6,9 @@ Widget CustomContainer(
   {
     String? text,
     VoidCallback? onTap,
-    Widget? icon
+    Widget? icon,
+    double? width,
+    double? height
   }
 ) {
   return Column(
@@ -14,15 +16,8 @@ Widget CustomContainer(
       InkWell(
         child: Container(
           padding: EdgeInsets.all(5),
-          width: 24.5.adaptSize,
-          height: 24.5.adaptSize,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color:Color(0XFFE8BFF7),
-            border: Border.all(
-              color: Color(0XFF9B03D0),
-            )
-          ),
+          width: width == null ? 32.adaptSize : width,
+          height: height == null ? 32.adaptSize : height,
           child: icon
         )
       ),
