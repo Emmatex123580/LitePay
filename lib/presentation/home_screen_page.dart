@@ -617,6 +617,12 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
               ),
               CustomContainer(
                 text: "Data",
+                 onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=>BuyDataBundle() )
+                  );
+                },
                 icon: SvgPicture.asset(
                   "assets/images/data.svg",
                   width: 6.5.adaptSize,
@@ -626,6 +632,12 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
               ),
               CustomContainer(
                 text: "Cable Sub",
+                 onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=> CablePayScreen())
+                  );
+                },
                 width: 30.adaptSize,
                 height: 30.adaptSize,
                 icon:  SvgPicture.asset(
@@ -662,6 +674,12 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
               ),
               CustomContainer(
                 text: "Electricity",
+                 onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=> ElectricityScreen())
+                  );
+                },
                 icon: SvgPicture.asset(
                 "assets/images/electricity.svg",
                   color: Color(0xFF9B03D0),
