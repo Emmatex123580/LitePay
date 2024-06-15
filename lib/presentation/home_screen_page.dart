@@ -361,7 +361,12 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context)=> Airtime())
+                      );
+                    },
                     child: Row(
                       children: [
                           SvgPicture.asset(
@@ -599,6 +604,12 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
             children: [
               CustomContainer(
                 text: "Airtime",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=> Airtime())
+                  );
+                },
                 icon: SvgPicture.asset(
                   "assets/images/img_airtime.svg",
                    color: Color.fromARGB(255, 242, 148, 6)

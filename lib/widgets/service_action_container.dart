@@ -14,6 +14,7 @@ Widget CustomContainer(
   return Column(
     children: [
       InkWell(
+        onTap: onTap,
         child: Container(
           padding: EdgeInsets.all(5),
           width: width == null ? 32.adaptSize : width,
